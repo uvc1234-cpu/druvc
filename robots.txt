@@ -1,0 +1,66 @@
+# druvc.com — robots.txt
+# DR UVC LLC | UVCMI 777™ | Dr. UVC Market Insights™
+# All content copyright DR UVC LLC. Unauthorized reproduction prohibited.
+
+# Block all AI training crawlers
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: YouBot
+Disallow: /
+
+User-agent: Diffbot
+Disallow: /
+
+User-agent: Omgili
+Disallow: /
+
+User-agent: DataForSeoBot
+Disallow: /
+
+# Block all bots from tracker content entirely
+User-agent: *
+Disallow: /trackers/
+
+# Allow Google Search to index homepage and about only
+User-agent: Googlebot
+Allow: /index.html
+Allow: /about.html
+Allow: /assets/
+Disallow: /trackers/
+
+User-agent: Bingbot
+Allow: /index.html
+Allow: /about.html
+Allow: /assets/
+Disallow: /trackers/
+
+# Sitemap
+Sitemap: https://druvc.com/sitemap.xml
