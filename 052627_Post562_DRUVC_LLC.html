@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Post #562 — DR UVC LLC · Who We Are · Dr. UVC Market Insights™</title>
+<meta name="description" content="DR UVC LLC — connecting math and markets. Three companies. One mission. druvc.com is your permanent home for all of it.">
+<meta name="robots" content="index, follow, noai, noimageai">
+<meta name="copyright" content="DR UVC LLC">
+<meta name="author" content="Dr. UV — DR UVC LLC">
+<style>
+  :root {
+    --bg: #FFFDE7;
+    --dark: #1a1a2e;
+    --gold: #FFD700;
+    --green: #00a854;
+    --red: #cc0033;
+    --cream: #fffde7;
+    --mid: #2a2a4a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Georgia', serif;
+    background: var(--bg);
+    color: var(--dark);
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    background: var(--dark);
+    padding: 14px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 2px solid var(--gold);
+  }
+  .nav-brand {
+    color: var(--gold);
+    font-family: 'Georgia', serif;
+    font-size: 1.05rem;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  .nav-links a {
+    color: #ccc;
+    text-decoration: none;
+    margin-left: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 0.88rem;
+    letter-spacing: 0.03em;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* POST HEADER */
+  .post-header {
+    background: var(--dark);
+    color: white;
+    padding: 52px 32px 44px;
+    text-align: center;
+    border-bottom: 3px solid var(--gold);
+  }
+  .post-eyebrow {
+    font-family: Arial, sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .post-title {
+    font-size: clamp(1.6rem, 4vw, 2.6rem);
+    color: var(--gold);
+    font-family: 'Georgia', serif;
+    line-height: 1.25;
+    margin-bottom: 14px;
+    max-width: 820px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .post-subtitle {
+    font-size: 1.05rem;
+    color: #ccc;
+    max-width: 680px;
+    margin: 0 auto 24px;
+    font-style: italic;
+  }
+  .post-meta {
+    font-family: Arial, sans-serif;
+    font-size: 0.82rem;
+    color: #888;
+    letter-spacing: 0.05em;
+  }
+
+  /* STATS BAR */
+  .stats-bar {
+    background: var(--mid);
+    padding: 20px 32px;
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #333;
+  }
+  .stat-item { text-align: center; }
+  .stat-num {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: var(--gold);
+    font-family: Arial, sans-serif;
+    display: block;
+  }
+  .stat-label {
+    font-size: 0.72rem;
+    color: #999;
+    font-family: Arial, sans-serif;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* BODY */
+  .post-body {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 48px 24px 64px;
+  }
+
+  .post-body p {
+    margin-bottom: 20px;
+    font-size: 1.05rem;
+    color: #222;
+  }
+
+  .post-body h2 {
+    font-size: 1.4rem;
+    color: var(--dark);
+    margin: 40px 0 14px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--gold);
+    font-family: 'Georgia', serif;
+  }
+
+  .post-body h3 {
+    font-size: 1.1rem;
+    color: var(--dark);
+    margin: 28px 0 10px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* PULL QUOTE */
+  .pull-quote {
+    background: var(--dark);
+    color: var(--gold);
+    padding: 28px 32px;
+    margin: 36px 0;
+    border-left: 4px solid var(--gold);
+    font-size: 1.15rem;
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  /* COMPANY TABLE */
+  .company-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-family: Arial, sans-serif;
+  }
+  .company-table th {
+    background: var(--dark);
+    color: var(--gold);
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .company-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #ddd;
+    font-size: 0.95rem;
+    vertical-align: top;
+  }
+  .company-table tr:nth-child(even) td { background: #f9f6e0; }
+  .company-table .co-name {
+    font-weight: bold;
+    color: var(--dark);
+    white-space: nowrap;
+  }
+
+  /* COMING SOON GRID */
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .feature-card {
+    background: var(--dark);
+    color: white;
+    padding: 20px;
+    border-top: 3px solid var(--gold);
+  }
+  .feature-card .fc-title {
+    color: var(--gold);
+    font-family: Arial, sans-serif;
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .feature-card .fc-desc {
+    font-size: 0.9rem;
+    color: #ccc;
+    line-height: 1.5;
+  }
+
+  /* URL BOX */
+  .url-box {
+    background: var(--dark);
+    border: 2px solid var(--gold);
+    padding: 24px 28px;
+    margin: 32px 0;
+    text-align: center;
+  }
+  .url-box .url-label {
+    font-family: Arial, sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    color: #999;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .url-box a {
+    color: var(--gold);
+    font-size: 1.15rem;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    text-decoration: none;
+    word-break: break-all;
+  }
+  .url-box a:hover { text-decoration: underline; }
+  .url-box .url-note {
+    font-size: 0.85rem;
+    color: #aaa;
+    margin-top: 8px;
+    font-style: italic;
+  }
+
+  /* CTA BOX */
+  .cta-box {
+    background: linear-gradient(135deg, var(--dark) 0%, var(--mid) 100%);
+    padding: 36px 32px;
+    margin: 40px 0;
+    text-align: center;
+    border: 1px solid var(--gold);
+  }
+  .cta-box h3 {
+    color: var(--gold);
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  .cta-steps {
+    list-style: none;
+    margin: 0 auto 20px;
+    max-width: 480px;
+    text-align: left;
+  }
+  .cta-steps li {
+    color: #ddd;
+    font-family: Arial, sans-serif;
+    font-size: 0.95rem;
+    padding: 6px 0;
+    border-bottom: 1px solid #333;
+  }
+  .cta-steps li span {
+    color: var(--gold);
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  .cta-btn {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--dark);
+    padding: 12px 32px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 0.95rem;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    margin-top: 8px;
+  }
+  .cta-btn:hover { opacity: 0.9; }
+
+  /* DIVIDER */
+  .divider {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 36px 0;
+  }
+  .divider-gold {
+    border: none;
+    border-top: 2px solid var(--gold);
+    margin: 36px 0;
+  }
+
+  /* DISCLAIMER */
+  .disclaimer {
+    background: #f5f0d0;
+    border-left: 3px solid var(--gold);
+    padding: 16px 20px;
+    margin: 36px 0 0;
+    font-size: 0.82rem;
+    color: #555;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark);
+    color: #888;
+    text-align: center;
+    padding: 28px 20px;
+    font-family: Arial, sans-serif;
+    font-size: 0.82rem;
+    border-top: 2px solid var(--gold);
+    line-height: 1.9;
+  }
+  footer a { color: var(--gold); text-decoration: none; }
+  .footer-brand { color: var(--gold); font-weight: bold; font-size: 1rem; margin-bottom: 6px; }
+
+  @media (max-width: 600px) {
+    .stats-bar { gap: 24px; }
+    .post-header { padding: 36px 20px 32px; }
+    .post-body { padding: 32px 18px 48px; }
+    nav { padding: 12px 18px; }
+    .nav-links a { margin-left: 12px; font-size: 0.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="index.html">Dr. UVC Market Insights™</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="trackers/index.html">Trackers</a>
+    <a href="about.html">About</a>
+    <a href="https://uvc9876.substack.com" target="_blank">Substack ↗</a>
+  </div>
+</nav>
+
+<!-- POST HEADER -->
+<div class="post-header">
+  <div class="post-eyebrow">UVCMI 777™ · DR UVC LLC · Post #562 · 052627_Wed</div>
+  <h1 class="post-title">Who We Are, What's Coming,<br>and Where to Find Everything</h1>
+  <div class="post-subtitle">Math. Markets. Method. Three companies. One mission.<br>Here's what we're building — and why druvc.com is your permanent home.</div>
+  <div class="post-meta">Dr. U V &nbsp;·&nbsp; May 27, 2026 &nbsp;·&nbsp; DR UVC LLC</div>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item"><span class="stat-num">561+</span><span class="stat-label">Posts Published</span></div>
+  <div class="stat-item"><span class="stat-num">313</span><span class="stat-label">Subscribers</span></div>
+  <div class="stat-item"><span class="stat-num">103K</span><span class="stat-label">Total Views</span></div>
+  <div class="stat-item"><span class="stat-num">130 Yrs</span><span class="stat-label">Formula Tested</span></div>
+</div>
+
+<!-- POST BODY -->
+<div class="post-body">
+
+  <p>Since Post #1, this publication has been about one thing: <strong>signal over noise.</strong></p>
+
+  <p>561 posts. 313 subscribers. 103K views. 130 years of formula testing behind every read.</p>
+
+  <p>But a lot has happened quietly in the background — and it's time to tell you about it.</p>
+
+  <hr class="divider-gold">
+
+  <h2>We Are Now DR UVC LLC</h2>
+
+  <p><strong>DR UVC LLC</strong> is the operating company behind everything you read here. Under that umbrella, three entities are now active:</p>
+
+  <table class="company-table">
+    <thead>
+      <tr><th>Entity</th><th>Mission</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="co-name">DR UVC LLC</span></td>
+        <td>Markets · UVCMI 777™ · Trackers · Investing content · druvc.com</td>
+      </tr>
+      <tr>
+        <td><span class="co-name">DR UVC AI LLC</span></td>
+        <td>AI-assisted research tools · Automation · Data infrastructure</td>
+      </tr>
+      <tr>
+        <td><span class="co-name">DR UVC Universal</span></td>
+        <td>Math education · Book series · PFT · Pandigital · Pattern intelligence</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>This isn't a pivot. It's a reveal.</p>
+
+  <div class="pull-quote">
+    "The same mind that builds DJ36 Trackers is writing books for kids about why numbers are beautiful. Math and markets were never separate disciplines — they were always one."
+  </div>
+
+  <p>The UVCMI 777™ formula is, at its core, a <strong>mathematical pattern recognition engine</strong> — 130 years of market data distilled into a single consistent lens. Pattern recognition. Precision. Consistency. The ability to see what others miss because you've trained your eye on structure rather than noise.</p>
+
+  <p><strong>DR UVC</strong> is the umbrella. Everything fits under it.</p>
+
+  <hr class="divider">
+
+  <h2>What You Can Expect Going Forward</h2>
+
+  <h3>On This Substack — Markets &amp; Trackers</h3>
+
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="fc-title">DJ36 Tracker™</div>
+      <div class="fc-desc">36 Dow tickers · 7 time frames · Every session. The complete Dow universe in one consistent regime read.</div>
+    </div>
+    <div class="feature-card">
+      <div class="fc-title">SS36 Tracker™</div>
+      <div class="fc-desc">S&amp;P 500 sectoral regime reads — 36 sector ETFs scored simultaneously through UVCMI 777™.</div>
+    </div>
+    <div class="feature-card">
+      <div class="fc-title">Master Tracker™</div>
+      <div class="fc-desc">Full market regime picture — indices, sectors, rates, commodities, all in one frame.</div>
+    </div>
+    <div class="feature-card">
+      <div class="fc-title">ROTI™ Framework</div>
+      <div class="fc-desc">Return on Time Invested — 252–266 regime reads per session. Maximum signal. Zero noise.</div>
+    </div>
+  </div>
+
+  <h3>Coming Soon</h3>
+  <ul style="margin: 0 0 20px 20px; font-size:1rem; color:#333; line-height:2;">
+    <li><strong>Paid tier</strong> — full tracker PDFs, extended analysis, priority access</li>
+    <li><strong>DR UVC Universal</strong> — math content, book previews, PFT series for all ages</li>
+    <li><strong>DR UVC AI</strong> — research tools built for the self-directed investor</li>
+    <li><strong>Direct download store</strong> — trackers, frameworks, and methodology guides</li>
+  </ul>
+
+  <hr class="divider">
+
+  <h2>druvc.com — Your Permanent Home</h2>
+
+  <p>Everything we publish now has a permanent home at <strong>druvc.com</strong>.</p>
+
+  <p>Every tracker. Every post archive. Every session. No more Google Drive links. No more expiring URLs. No more "link not found."</p>
+
+  <div class="url-box">
+    <div class="url-label">Permanent Home</div>
+    <a href="https://druvc.com" target="_blank">druvc.com</a>
+    <div class="url-note">Bookmark it. Share it. This is where everything lives.</div>
+  </div>
+
+  <p>The latest DJ36 Tracker is already there — permanent, fast, and accessible on any device:</p>
+
+  <div class="url-box">
+    <div class="url-label">DJ36 Tracker™ — Post #561 · 052626_Tue</div>
+    <a href="https://druvc.com/trackers/052626_DJ36_Tracker.html" target="_blank">druvc.com/trackers/052626_DJ36_Tracker.html</a>
+    <div class="url-note">36 tickers · 7 time frames · Full session read</div>
+  </div>
+
+  <p><strong>Substack is the front door. druvc.com is the library.</strong> If you don't go directly to the website, every post will bring you there — clean links, every time.</p>
+
+  <hr class="divider">
+
+  <h2>Why Math + Markets?</h2>
+
+  <p>Because they are the same discipline.</p>
+
+  <p>The same thinking that produces a clean pandigital identity — every digit in perfect order, one elegant expression — produces a clean regime read. Order from apparent chaos. Signal from noise.</p>
+
+  <div class="pull-quote">
+    "One formula. Seven time frames. 130 years. Zero rewrites. That is not a trading system — that is mathematics applied to markets."
+    <br><br>— Dr. UV · DR UVC LLC
+  </div>
+
+  <p>Whether you're a subscriber who follows the trackers, a parent looking for math books that make numbers come alive, or an investor who wants institutional-grade pattern intelligence — <strong>DR UVC was built for you.</strong></p>
+
+  <hr class="divider-gold">
+
+  <div class="cta-box">
+    <h3>What to Do Right Now</h3>
+    <ul class="cta-steps">
+      <li><span>1.</span> Bookmark <strong>druvc.com</strong> — your permanent tracker archive</li>
+      <li><span>2.</span> Share this post — if you know someone who thinks in patterns, they belong here</li>
+      <li><span>3.</span> Watch for the <strong>paid tier announcement</strong> — coming soon</li>
+      <li><span>4.</span> Follow on Substack — 3 posts per day, every market session</li>
+    </ul>
+    <a class="cta-btn" href="https://uvc9876.substack.com" target="_blank">Follow on Substack ↗</a>
+  </div>
+
+  <div class="disclaimer">
+    © 2026 <strong>DR UVC LLC</strong>. All Rights Reserved. UVCMI 777™ · ROTI™ · DJ36 Tracker™ · SS36 Tracker™ are trademarks of DR UVC LLC. Unauthorized reproduction prohibited.<br>
+    For informational purposes only. Not financial advice. Past performance does not guarantee future results.
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Dr. UVC Market Insights™ · UVCMI 777™</div>
+  © 2026 DR UVC LLC. All Rights Reserved.<br>
+  <a href="index.html">Home</a> · <a href="trackers/index.html">Tracker Archive</a> · <a href="about.html">About</a> · <a href="https://uvc9876.substack.com" target="_blank">Substack ↗</a><br><br>
+  <em>Disclaimer: For informational purposes only. Not financial advice. Always manage risk appropriately.</em>
+</footer>
+
+</body>
+</html>
