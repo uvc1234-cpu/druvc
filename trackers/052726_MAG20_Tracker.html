@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noai, noimageai">
+<title>Dr. UV's MAG20 Tracker — 052726 · DR UVC LLC</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:   #0A0F1E;
+    --panel:  #111827;
+    --card:   #1A2235;
+    --border: #1E2D45;
+    --gold:   #C9A84C;
+    --gold2:  #E8C870;
+    --green:  #00C853;
+    --red:    #FF1744;
+    --cyan:   #00BCD4;
+    --grey:   #6B7B99;
+    --white:  #E8EDF5;
+    --dim:    #9AA5BD;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--navy); color:var(--white); font-family:'Inter',sans-serif; font-size:13px; }
+
+  /* ── HEADER ── */
+  .header { background:linear-gradient(135deg,#0D1528 0%,#111E35 100%);
+    border-bottom:2px solid var(--gold); padding:20px 28px 16px; }
+  .header-top { display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:12px; }
+  .brand { font-size:11px; color:var(--gold); letter-spacing:2px; text-transform:uppercase; margin-bottom:6px; }
+  .title { font-size:28px; font-weight:800; color:var(--white); letter-spacing:-0.5px; }
+  .title span { color:var(--gold); }
+  .subtitle { font-size:12px; color:var(--dim); margin-top:4px; }
+  .date-badge { background:var(--gold); color:#0A0F1E; padding:6px 14px; border-radius:6px;
+    font-weight:700; font-size:12px; white-space:nowrap; align-self:flex-start; }
+
+  /* stats bar */
+  .stats-bar { display:flex; gap:24px; margin-top:16px; flex-wrap:wrap; }
+  .stat { display:flex; flex-direction:column; }
+  .stat-label { font-size:9px; color:var(--grey); text-transform:uppercase; letter-spacing:1px; }
+  .stat-val { font-size:16px; font-weight:700; color:var(--gold2); }
+  .stat-val.up { color:var(--green); }
+  .stat-val.dn { color:var(--red); }
+
+  /* ── SECTION HEADERS ── */
+  .section { margin:20px 16px 0; }
+  .section-hdr { display:flex; align-items:center; gap:10px; padding:10px 16px;
+    border-radius:8px 8px 0 0; border-bottom:1px solid var(--border); }
+  .section-hdr.mags { background:linear-gradient(90deg,#1a2540,#111827); border-left:4px solid var(--cyan); }
+  .section-hdr.pm   { background:linear-gradient(90deg,#1a2a1a,#111827); border-left:4px solid #FFD700; }
+  .section-hdr.idx  { background:linear-gradient(90deg,#221a30,#111827); border-left:4px solid #BB86FC; }
+  .section-title { font-size:14px; font-weight:700; letter-spacing:1px; text-transform:uppercase; }
+  .section-title.mags { color:var(--cyan); }
+  .section-title.pm   { color:#FFD700; }
+  .section-title.idx  { color:#BB86FC; }
+  .section-desc { font-size:10px; color:var(--dim); margin-left:auto; }
+
+  /* ── MAGS ETF FEATURE CARD ── */
+  .mags-feature { background:var(--card); border:1px solid var(--border); border-radius:0 0 8px 8px;
+    padding:16px 20px; margin-bottom:2px; display:flex; align-items:center; gap:20px; flex-wrap:wrap; }
+  .mags-sym { font-size:22px; font-weight:800; color:var(--cyan); }
+  .mags-name { font-size:11px; color:var(--dim); }
+  .mags-price { font-size:26px; font-weight:800; color:var(--white); }
+  .mags-chg { font-size:14px; font-weight:600; padding:3px 10px; border-radius:4px; }
+  .mags-chg.up { color:var(--green); background:rgba(0,200,83,0.12); }
+  .mags-chg.dn { color:var(--red); background:rgba(255,23,68,0.12); }
+  .mags-uvcmi { text-align:center; }
+  .mags-uvcmi-val { font-size:20px; font-weight:700; color:var(--green); }
+  .mags-uvcmi-lbl { font-size:9px; color:var(--grey); text-transform:uppercase; letter-spacing:1px; }
+  .mags-mo { text-align:center; }
+  .mags-mo-val { font-size:16px; font-weight:600; color:var(--gold); }
+  .mags-analysis { background:rgba(0,188,212,0.06); border:1px solid rgba(0,188,212,0.2);
+    border-radius:6px; padding:10px 14px; flex:1; min-width:220px; }
+  .mags-analysis p { font-size:11px; color:var(--dim); line-height:1.6; }
+  .mags-analysis strong { color:var(--white); }
+
+  /* ── TABLE ── */
+  .tbl-wrap { background:var(--card); border:1px solid var(--border); border-radius:0 0 8px 8px; overflow-x:auto; margin-bottom:16px; }
+  table { width:100%; border-collapse:collapse; min-width:700px; }
+  thead tr { background:#0F1A2E; }
+  thead th { padding:8px 6px; font-size:9px; font-weight:600; text-transform:uppercase;
+    letter-spacing:0.8px; color:var(--grey); text-align:center; border-bottom:1px solid var(--border);
+    white-space:nowrap; }
+  thead th.left { text-align:left; padding-left:14px; }
+  tbody tr { border-bottom:1px solid rgba(30,45,69,0.6); transition:background 0.15s; }
+  tbody tr:hover { background:rgba(201,168,76,0.05); }
+  tbody tr:last-child { border-bottom:none; }
+  td { padding:9px 6px; text-align:center; white-space:nowrap; }
+  td.sym-cell { text-align:left; padding-left:14px; }
+  .sym { font-weight:700; font-size:13px; }
+  .sym.mags-sym { color:var(--cyan); }
+  .sym.pm-sym   { color:#FFD700; }
+  .sym.idx-sym  { color:#BB86FC; }
+  .co-name { font-size:9px; color:var(--grey); display:block; margin-top:1px; }
+  .price { font-weight:600; color:var(--white); }
+  .pct { font-weight:600; font-size:12px; }
+  .pct.up { color:var(--green); }
+  .pct.dn { color:var(--red); }
+
+  /* signal cells */
+  .sig { font-size:11px; font-weight:600; border-radius:3px; padding:1px 3px; }
+  .sig.pos { color:var(--green); }
+  .sig.neg { color:var(--red); }
+  .sig.neu { color:var(--grey); }
+  .sig.strong-pos { color:#00FF88; font-weight:800; }
+  .sig.strong-neg { color:#FF4466; font-weight:800; }
+
+  /* ── B1 bars ── */
+  .b1-cell { font-size:11px; font-weight:600; }
+  .b1-cell.pos { color:var(--green); }
+  .b1-cell.neg { color:var(--red); }
+  .b1-cell.neu { color:var(--grey); }
+
+  /* timeframe headers */
+  .tf-group { background:#0A1020; }
+  .tf-group th { color:var(--gold); font-size:8px; letter-spacing:1.5px; text-align:center; padding:4px 6px; }
+
+  /* ── REGIME SUMMARY ── */
+  .regime-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px;
+    padding:16px; background:var(--panel); border-top:1px solid var(--border); }
+  .regime-card { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:14px 16px; }
+  .regime-card-title { font-size:9px; text-transform:uppercase; letter-spacing:1px; color:var(--grey); margin-bottom:8px; }
+  .regime-card-val { font-size:18px; font-weight:800; margin-bottom:4px; }
+  .regime-card-val.bull { color:var(--green); }
+  .regime-card-val.bear { color:var(--red); }
+  .regime-card-val.mix  { color:var(--gold); }
+  .regime-card-desc { font-size:10px; color:var(--dim); line-height:1.5; }
+
+  /* ── FOOTER ── */
+  .footer { text-align:center; padding:20px; border-top:1px solid var(--border);
+    font-size:10px; color:var(--grey); line-height:1.8; margin-top:8px; }
+  .footer a { color:var(--gold); text-decoration:none; }
+  .footer strong { color:var(--dim); }
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="brand">UVCMI 777™ · DR UVC LLC · Dr. UV's Market Intelligence</div>
+      <div class="title">Dr. UV's <span>MAG20</span> Tracker</div>
+      <div class="subtitle">3 Groups · 20 Symbols · Mag7 · Precious Metals · Key Indices · Multi-Timeframe UVCMI 777™ Regime Read</div>
+    </div>
+    <div class="date-badge">052726 · Wed · 5/27/26</div>
+  </div>
+  <div class="stats-bar">
+    <div class="stat"><span class="stat-label">MAGS ETF</span><span class="stat-val up">70.45 &nbsp;+1.18%</span></div>
+    <div class="stat"><span class="stat-label">UVCMI (Daily)</span><span class="stat-val up">+429.83</span></div>
+    <div class="stat"><span class="stat-label">NYSE MO</span><span class="stat-val">20.44</span></div>
+    <div class="stat"><span class="stat-label">MAG7 Regime</span><span class="stat-val up">BULLISH</span></div>
+    <div class="stat"><span class="stat-label">PM Regime</span><span class="stat-val dn">CORRECTING</span></div>
+    <div class="stat"><span class="stat-label">Indices</span><span class="stat-val">MIXED</span></div>
+  </div>
+</div>
+
+<!-- ══ GROUP 1: MAGS / MAG7 ══ -->
+<div class="section">
+  <div class="section-hdr mags">
+    <div class="section-title mags">▶ GROUP 1 — MAG7 &amp; MAGS ETF</div>
+    <div class="section-desc">Magnificent 7 + Roundhill MAGS ETF · Tech &amp; Growth Leaders</div>
+  </div>
+
+  <!-- MAGS feature card -->
+  <div class="mags-feature">
+    <div>
+      <div class="mags-sym">MAGS</div>
+      <div class="mags-name">Roundhill Magnificent Seven ETF</div>
+    </div>
+    <div class="mags-price">$70.45</div>
+    <div class="mags-chg up">+1.18%</div>
+    <div class="mags-uvcmi">
+      <div class="mags-uvcmi-val">+429.83</div>
+      <div class="mags-uvcmi-lbl">UVCMI Daily</div>
+    </div>
+    <div class="mags-mo">
+      <div class="mags-mo-val">20.44</div>
+      <div class="mags-uvcmi-lbl">NYSE MO</div>
+    </div>
+    <div class="mags-analysis">
+      <p><strong>Chart Read:</strong> Symmetrical triangle resolved to the upside. Recovered from March lows (~$56) to press <strong>$69.68–$69.92 resistance</strong>. Price at $70.45 — breaking through. UVCMI strongly positive. NYSE MO above zero. <strong>Bull regime confirmed.</strong></p>
+    </div>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr class="tf-group">
+          <th colspan="3" class="left" style="color:var(--dim);">SYMBOL</th>
+          <th colspan="5">←— B1 MULTI-TIMEFRAME ——→</th>
+          <th colspan="2">PRICE</th>
+          <th colspan="3">ST · 1h / 2h / 4h</th>
+          <th colspan="3">IT-LT · D / 2D / W</th>
+        </tr>
+        <tr>
+          <th class="left">Sym</th>
+          <th class="left">Company</th>
+          <th>Price</th>
+          <th>B1-Y</th>
+          <th>B1-Q</th>
+          <th>B1-M</th>
+          <th>B1-W</th>
+          <th>B1-D</th>
+          <th>%Chg</th>
+          <th>RS-v</th>
+          <th>1h UVCMI</th>
+          <th>2h UVCMI</th>
+          <th>4h UVCMI</th>
+          <th>D UVCMI</th>
+          <th>2D UVCMI</th>
+          <th>W UVCMI</th>
+        </tr>
+      </thead>
+      <tbody><tr><td class="sym-cell"><span class="sym mags-sym">META</span><span class="co-name">Meta Platforms Inc</span></td><td class="price">$629.93</td><td class="b1-cell neg">-457</td><td class="b1-cell pos">+1,010</td><td class="b1-cell pos">+294</td><td class="b1-cell pos">+322</td><td class="b1-cell pos">+287</td><td class="pct up">+2.87%</td><td></td><td class="sig pos">+105</td><td class="sig pos">+200</td><td class="sig pos">+164</td><td class="sig pos">+258</td><td class="sig pos">+176</td><td class="sig neg">-104</td></tr>
+<tr><td class="sym-cell"><span class="sym mags-sym">AMZ</span><span class="co-name">Amazon.com Inc</span></td><td class="price">$272.31</td><td class="b1-cell pos">+1,798</td><td class="b1-cell pos">+3,075</td><td class="b1-cell pos">+274</td><td class="b1-cell pos">+225</td><td class="b1-cell pos">+265</td><td class="pct up">+2.65%</td><td></td><td class="sig pos">+87</td><td class="sig pos">+134</td><td class="sig pos">+290</td><td class="sig strong-pos">+570</td><td class="sig strong-pos">+789</td><td class="sig strong-pos">+1,033</td></tr>
+<tr><td class="sym-cell"><span class="sym mags-sym">TSLA</span><span class="co-name">Tesla Inc</span></td><td class="price">$438.13</td><td class="b1-cell neg">-258</td><td class="b1-cell pos">+1,786</td><td class="b1-cell pos">+1,480</td><td class="b1-cell pos">+285</td><td class="b1-cell pos">+105</td><td class="pct up">+1.05%</td><td></td><td class="sig pos">+53</td><td class="sig pos">+110</td><td class="sig strong-pos">+330</td><td class="sig strong-pos">+653</td><td class="sig strong-pos">+593</td><td class="sig strong-pos">+825</td></tr>
+<tr><td class="sym-cell"><span class="sym mags-sym">AAPL</span><span class="co-name">Apple Inc</span></td><td class="price">$310.60</td><td class="b1-cell pos">+1,425</td><td class="b1-cell pos">+2,238</td><td class="b1-cell pos">+1,446</td><td class="b1-cell pos">+58</td><td class="b1-cell pos">+74</td><td class="pct up">+0.74%</td><td></td><td class="sig pos">+34</td><td class="sig pos">+87</td><td class="sig strong-pos">+309</td><td class="sig strong-pos">+719</td><td class="sig strong-pos">+876</td><td class="sig strong-pos">+1,254</td></tr>
+<tr><td class="sym-cell"><span class="sym mags-sym">QQQ</span><span class="co-name">Invesco QQQ Trust</span></td><td class="price">$727.82</td><td class="b1-cell pos">+1,848</td><td class="b1-cell pos">+2,610</td><td class="b1-cell pos">+900</td><td class="b1-cell pos">+143</td><td class="b1-cell neg">-34</td><td class="pct dn">-0.34%</td><td></td><td class="sig pos">+1</td><td class="sig pos">+80</td><td class="sig pos">+221</td><td class="sig strong-pos">+519</td><td class="sig strong-pos">+698</td><td class="sig strong-pos">+1,184</td></tr>
+<tr><td class="sym-cell"><span class="sym mags-sym">MSFT</span><span class="co-name">Microsoft Corp</span></td><td class="price">$414.58</td><td class="b1-cell neg">-1,428</td><td class="b1-cell pos">+1,200</td><td class="b1-cell pos">+167</td><td class="b1-cell neg">-95</td><td class="b1-cell neg">-35</td><td class="pct dn">-0.35%</td><td></td><td class="sig neg">-13</td><td class="sig neg">-22</td><td class="sig neg">-11</td><td class="sig pos">+14</td><td class="sig pos">+16</td><td class="sig strong-neg">-415</td></tr>
+
+  </tbody></table></div>
+
+<!-- GROUP 2: PM -->
+<div class="section">
+  <div class="section-hdr pm">
+    <div class="section-title pm">▶ GROUP 2 — PRECIOUS METALS</div>
+    <div class="section-desc">Gold · Silver · Miners · Physical Trust ETFs</div>
+  </div>
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr class="tf-group">
+          <th colspan="3" class="left" style="color:var(--dim);">SYMBOL</th>
+          <th colspan="5">←— B1 MULTI-TIMEFRAME ——→</th>
+          <th colspan="2">PRICE</th>
+          <th colspan="3">ST · 1h / 2h / 4h</th>
+          <th colspan="3">IT-LT · D / 2D / W</th>
+        </tr>
+        <tr>
+          <th class="left">Sym</th><th class="left">Company</th><th>Price</th>
+          <th>B1-Y</th><th>B1-Q</th><th>B1-M</th><th>B1-W</th><th>B1-D</th>
+          <th>%Chg</th><th>RS-v</th>
+          <th>1h</th><th>2h</th><th>4h</th><th>D</th><th>2D</th><th>W</th>
+        </tr>
+      </thead>
+      <tbody><tr><td class="sym-cell"><span class="sym pm-sym">GNT</span><span class="co-name">Gamco Natural Resources Gold</span></td><td class="price">$8.26</td><td class="b1-cell pos">+1,087</td><td class="b1-cell neg">-108</td><td class="b1-cell neg">-259</td><td class="b1-cell pos">+110</td><td class="b1-cell neg">-12</td><td class="pct dn">-0.12%</td><td></td><td class="sig pos">+42</td><td class="sig pos">+25</td><td class="sig neg">-48</td><td class="sig neg">-83</td><td class="sig neg">-78</td><td class="sig strong-pos">+327</td></tr>
+<tr><td class="sym-cell"><span class="sym pm-sym">SILJ</span><span class="co-name">ETFMG Prime Junior Silver</span></td><td class="price">$29.37</td><td class="b1-cell pos">+614</td><td class="b1-cell neg">-118</td><td class="b1-cell pos">+17</td><td class="b1-cell pos">+187</td><td class="b1-cell neg">-220</td><td class="pct dn">-2.20%</td><td></td><td class="sig neg">-41</td><td class="sig neg">-148</td><td class="sig neg">-196</td><td class="sig strong-neg">-311</td><td class="sig strong-neg">-473</td><td class="sig strong-pos">+321</td></tr>
+<tr><td class="sym-cell"><span class="sym pm-sym">GDX</span><span class="co-name">VanEck Gold Miners ETF</span></td><td class="price">$85.72</td><td class="b1-cell neg">-6</td><td class="b1-cell neg">-659</td><td class="b1-cell neg">-291</td><td class="b1-cell pos">+82</td><td class="b1-cell neg">-314</td><td class="pct dn">-3.14%</td><td></td><td class="sig neg">-60</td><td class="sig neg">-159</td><td class="sig neg">-271</td><td class="sig strong-neg">-466</td><td class="sig strong-neg">-656</td><td class="sig neg">-49</td></tr>
+<tr><td class="sym-cell"><span class="sym pm-sym">PHYS</span><span class="co-name">Sprott Physical Gold Trust</span></td><td class="price">$33.73</td><td class="b1-cell pos">+215</td><td class="b1-cell neg">-483</td><td class="b1-cell neg">-368</td><td class="b1-cell neg">-111</td><td class="b1-cell neg">-114</td><td class="pct dn">-1.14%</td><td></td><td class="sig neg">-66</td><td class="sig neg">-128</td><td class="sig neg">-185</td><td class="sig strong-neg">-428</td><td class="sig strong-neg">-517</td><td class="sig neg">-122</td></tr>
+<tr><td class="sym-cell"><span class="sym pm-sym">GLTR</span><span class="co-name">ETFS Physical Prec Metal Basket</span></td><td class="price">$209.07</td><td class="b1-cell pos">+169</td><td class="b1-cell neg">-441</td><td class="b1-cell neg">-301</td><td class="b1-cell neg">-180</td><td class="b1-cell neg">-274</td><td class="pct dn">-2.74%</td><td></td><td class="sig neg">-123</td><td class="sig neg">-224</td><td class="sig strong-neg">-406</td><td class="sig strong-neg">-511</td><td class="sig strong-neg">-617</td><td class="sig pos">+6</td></tr>
+<tr><td class="sym-cell"><span class="sym pm-sym">PSLV</span><span class="co-name">Sprott Physical Silver Trust</span></td><td class="price">$23.83</td><td class="b1-cell pos">+76</td><td class="b1-cell neg">-230</td><td class="b1-cell neg">-8</td><td class="b1-cell neg">-169</td><td class="b1-cell neg">-368</td><td class="pct dn">-3.68%</td><td></td><td class="sig neg">-222</td><td class="sig strong-neg">-373</td><td class="sig strong-neg">-442</td><td class="sig strong-neg">-491</td><td class="sig strong-neg">-605</td><td class="sig strong-pos">+317</td></tr>
+<tr><td class="sym-cell"><span class="sym pm-sym">CEF</span><span class="co-name">Sprott Gold and Silver Trust</span></td><td class="price">$46.33</td><td class="b1-cell pos">+116</td><td class="b1-cell neg">-291</td><td class="b1-cell neg">-250</td><td class="b1-cell neg">-211</td><td class="b1-cell neg">-287</td><td class="pct dn">-2.87%</td><td></td><td class="sig neg">-257</td><td class="sig strong-neg">-358</td><td class="sig strong-neg">-418</td><td class="sig strong-neg">-495</td><td class="sig strong-neg">-576</td><td class="sig pos">+62</td></tr>
+</tbody>
+    </table>
+  </div>
+</div>
+
+<!-- GROUP 3: INDICES -->
+<div class="section" style="margin-bottom:16px;">
+  <div class="section-hdr idx">
+    <div class="section-title idx">▶ GROUP 3 — KEY INDICES &amp; TECH</div>
+    <div class="section-desc">SOXX · SPY · VTI · NVDA · NFLX · GOO</div>
+  </div>
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr class="tf-group">
+          <th colspan="3" class="left" style="color:var(--dim);">SYMBOL</th>
+          <th colspan="5">←— B1 MULTI-TIMEFRAME ——→</th>
+          <th colspan="2">PRICE</th>
+          <th colspan="3">ST · 1h / 2h / 4h</th>
+          <th colspan="3">IT-LT · D / 2D / W</th>
+        </tr>
+        <tr>
+          <th class="left">Sym</th><th class="left">Company</th><th>Price</th>
+          <th>B1-Y</th><th>B1-Q</th><th>B1-M</th><th>B1-W</th><th>B1-D</th>
+          <th>%Chg</th><th>RS-v</th>
+          <th>1h</th><th>2h</th><th>4h</th><th>D</th><th>2D</th><th>W</th>
+        </tr>
+      </thead>
+      <tbody><tr><td class="sym-cell"><span class="sym idx-sym">SOXX</span><span class="co-name">iShares PHLX SOX Semiconductor</span></td><td class="price">$558.43</td><td class="b1-cell pos">+8,543</td><td class="b1-cell pos">+6,991</td><td class="b1-cell pos">+2,102</td><td class="b1-cell pos">+393</td><td class="b1-cell neg">-205</td><td class="pct dn">-2.05%</td><td></td><td class="sig pos">+86</td><td class="sig pos">+225</td><td class="sig strong-pos">+555</td><td class="sig strong-pos">+1,191</td><td class="sig strong-pos">+1,600</td><td class="sig strong-pos">+2,733</td></tr>
+<tr><td class="sym-cell"><span class="sym idx-sym">VTI</span><span class="co-name">Vanguard Total Stock Mkt ETF</span></td><td class="price">$369.00</td><td class="b1-cell pos">+1,006</td><td class="b1-cell pos">+1,502</td><td class="b1-cell pos">+418</td><td class="b1-cell pos">+60</td><td class="b1-cell neg">-12</td><td class="pct dn">-0.12%</td><td></td><td class="sig neg">-20</td><td class="sig pos">+25</td><td class="sig pos">+116</td><td class="sig pos">+293</td><td class="sig strong-pos">+387</td><td class="sig strong-pos">+760</td></tr>
+<tr><td class="sym-cell"><span class="sym idx-sym">SPY</span><span class="co-name">SPDR S&P 500 ETF Trust</span></td><td class="price">$749.92</td><td class="b1-cell pos">+997</td><td class="b1-cell pos">+1,531</td><td class="b1-cell pos">+435</td><td class="b1-cell pos">+57</td><td class="b1-cell neg">-17</td><td class="pct dn">-0.09%</td><td></td><td class="sig neg">-21</td><td class="sig pos">+40</td><td class="sig pos">+116</td><td class="sig pos">+295</td><td class="sig strong-pos">+393</td><td class="sig strong-pos">+768</td></tr>
+<tr><td class="sym-cell"><span class="sym idx-sym">NFLX</span><span class="co-name">Netflix Inc</span></td><td class="price">$87.36</td><td class="b1-cell neg">-682</td><td class="b1-cell neg">-914</td><td class="b1-cell neg">-667</td><td class="b1-cell neg">-139</td><td class="b1-cell neg">-36</td><td class="pct dn">-0.36%</td><td></td><td class="sig neg">-64</td><td class="sig neg">-66</td><td class="sig neg">-151</td><td class="sig strong-neg">-380</td><td class="sig strong-neg">-331</td><td class="sig strong-neg">-906</td></tr>
+<tr><td class="sym-cell"><span class="sym idx-sym">GOO</span><span class="co-name">Alphabet Inc Class A</span></td><td class="price">$388.79</td><td class="b1-cell pos">+2,421</td><td class="b1-cell pos">+3,520</td><td class="b1-cell pos">+104</td><td class="b1-cell pos">+152</td><td class="b1-cell neg">-2</td><td class="pct dn">-0.02%</td><td></td><td class="sig neg">-30</td><td class="sig neg">-42</td><td class="sig pos">+48</td><td class="sig strong-pos">+434</td><td class="sig strong-pos">+680</td><td class="sig strong-pos">+1,453</td></tr>
+<tr><td class="sym-cell"><span class="sym idx-sym">NVDA</span><span class="co-name">NVIDIA Corporation</span></td><td class="price">$211.74</td><td class="b1-cell pos">+1,353</td><td class="b1-cell pos">+2,141</td><td class="b1-cell pos">+610</td><td class="b1-cell neg">-167</td><td class="b1-cell neg">-145</td><td class="pct dn">-1.45%</td><td></td><td class="sig neg">-184</td><td class="sig neg">-222</td><td class="sig neg">-124</td><td class="sig pos">+16</td><td class="sig pos">+259</td><td class="sig strong-pos">+747</td></tr>
+</tbody>
+    </table>
+  </div>
+</div>
+
+
+<div class="regime-grid">
+  <div class="regime-card">
+    <div class="regime-card-title">MAG7 Group Regime</div>
+    <div class="regime-card-val bull">BULLISH</div>
+    <div class="regime-card-desc">MAGS ETF breaking above $70 resistance. META +2.87%, AMZ +2.65%, TSLA +1.05% leading. UVCMI strongly positive across all timeframes. QQQ and MSFT lagging slightly short-term — watch for follow-through.</div>
+  </div>
+  <div class="regime-card">
+    <div class="regime-card-title">Precious Metals Regime</div>
+    <div class="regime-card-val bear">CORRECTING</div>
+    <div class="regime-card-desc">Silver miners (SILJ -2.20%, PSLV -3.68%) leading the pullback. Gold miners (GDX -3.14%) confirm. UVCMI negative across all PM names on daily and 2D frames. Longer-term (W) showing some stabilization on SILJ, PSLV, CEF. Healthy correction in a longer-term bull.</div>
+  </div>
+  <div class="regime-card">
+    <div class="regime-card-title">Indices / Tech Regime</div>
+    <div class="regime-card-val mix">MIXED</div>
+    <div class="regime-card-desc">SOXX leading on long-term (D: +1191) but -2.05% today. VTI and SPY flat/slightly negative. NVDA short-term negative, long-term recovering. NFLX weak across all frames. GOO and AAPL showing relative strength. Regime cautiously constructive on long-term frames.</div>
+  </div>
+  <div class="regime-card">
+    <div class="regime-card-title">Overall UVCMI 777™ Read</div>
+    <div class="regime-card-val bull">CONSTRUCTIVE</div>
+    <div class="regime-card-desc">MAGS ETF UVCMI daily +429.83 with NYSE MO at +20.44. Tech and growth leading. PM correcting after strong run. Broad indices range-bound. Long-term UVCMI frames remain positive on tech/growth leaders. Monitor MSFT and QQQ for ST confirmation.</div>
+  </div>
+</div>
+
+<div class="footer">
+  <strong>DR UVC LLC</strong> &nbsp;·&nbsp; <a href="https://druvc.com">druvc.com</a>
+  &nbsp;·&nbsp; UVCMI 777™ &nbsp;·&nbsp; Dr. UV's MAG20 Tracker &nbsp;·&nbsp; 052726 · Wed · 5/27/26<br>
+  UVCMI 777™ · ROTI™ · DJ36 Tracker™ · SS36 Tracker™ are trademarks of DR UVC LLC<br>
+  <em>For informational and educational purposes only. Not financial advice. Past performance does not guarantee future results.</em>
+</div>
+</body></html>
