@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. UV's Top World Assets | Post #568 | 06/03/26</title>
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HQY23909DD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HQY23909DD');
+</script>
+
+<!-- Image self-loader: converts CDN src to base64 on page open so images are fully embedded -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('img[data-cdn]').forEach(function(img) {
+    var url = img.getAttribute('data-cdn');
+    fetch(url)
+      .then(function(r){ return r.blob(); })
+      .then(function(blob){
+        var reader = new FileReader();
+        reader.onloadend = function(){ img.src = reader.result; img.removeAttribute('data-cdn'); };
+        reader.readAsDataURL(blob);
+      })
+      .catch(function(){ img.src = url; }); // fallback to CDN if fetch fails
+  });
+});
+</script>
+
+<style>
+  :root {
+    --bg: #0D0D1A;
+    --gold: #F9A825;
+    --green: #00E676;
+    --red: #FF5252;
+    --card-bg: #13132B;
+    --border: #2A2A4A;
+    --text: #E0E0FF;
+    --muted: #8888AA;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    line-height: 1.6;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: linear-gradient(135deg, #0D0D1A 0%, #1A1A35 50%, #0D0D1A 100%);
+    border-bottom: 3px solid var(--gold);
+    padding: 32px 24px 24px;
+    text-align: center;
+  }
+  .header .brand {
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .header h1 {
+    font-size: clamp(22px, 4vw, 38px);
+    font-weight: 900;
+    color: #FFFFFF;
+    letter-spacing: 1px;
+    line-height: 1.2;
+  }
+  .header h1 span { color: var(--gold); }
+  .header .sub {
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 2px;
+  }
+  .post-badge {
+    display: inline-block;
+    margin-top: 12px;
+    background: var(--gold);
+    color: #000;
+    font-weight: 700;
+    font-size: 12px;
+    padding: 4px 14px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 36px 20px;
+  }
+  .section-label {
+    display: inline-block;
+    background: var(--gold);
+    color: #000;
+    font-weight: 800;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 3px;
+    margin-bottom: 16px;
+  }
+  .section h2 {
+    font-size: clamp(18px, 3vw, 26px);
+    font-weight: 800;
+    color: #FFF;
+    margin-bottom: 8px;
+  }
+  .section p.lead {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 20px;
+    max-width: 760px;
+  }
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0;
+  }
+
+  /* ── CHART IMAGES ── */
+  .chart-wrap {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+  .chart-wrap img {
+    width: 100%;
+    display: block;
+  }
+  .chart-caption {
+    padding: 12px 18px;
+    font-size: 12px;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    font-style: italic;
+  }
+
+  /* ── ANALYSIS BOX ── */
+  .analysis-box {
+    background: var(--card-bg);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+  }
+  .analysis-box h3 {
+    color: var(--gold);
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .analysis-box p { font-size: 14px; color: var(--text); margin-bottom: 8px; }
+  .analysis-box p:last-child { margin-bottom: 0; }
+
+  /* ── ALERT BOX ── */
+  .alert-box {
+    background: rgba(255, 82, 82, 0.08);
+    border: 1px solid var(--red);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .alert-box .alert-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+  .alert-box p { font-size: 13px; color: #FFB3B3; }
+  .alert-box strong { color: var(--red); }
+
+  /* ── WINNERS / LOSERS CARDS ── */
+  .wl-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+  @media(max-width: 640px) { .wl-grid { grid-template-columns: 1fr; } }
+
+  .wl-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .wl-card .wl-header {
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .wl-card.winners .wl-header { background: rgba(0,230,118,0.12); color: var(--green); border-bottom: 1px solid rgba(0,230,118,0.2); }
+  .wl-card.losers .wl-header  { background: rgba(255,82,82,0.12);  color: var(--red);   border-bottom: 1px solid rgba(255,82,82,0.2); }
+
+  .wl-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+  }
+  .wl-row:last-child { border-bottom: none; }
+  .wl-row .sym { font-weight: 700; color: #FFF; width: 60px; }
+  .wl-row .name { color: var(--muted); font-size: 12px; flex: 1; }
+  .wl-row .val { font-weight: 700; font-size: 13px; }
+  .wl-card.winners .wl-row .val { color: var(--green); }
+  .wl-card.losers  .wl-row .val { color: var(--red); }
+
+  /* ── DATA TABLE ── */
+  .table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 24px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    min-width: 700px;
+  }
+  thead tr { background: #1A1A3A; }
+  thead th {
+    padding: 10px 12px;
+    text-align: right;
+    color: var(--gold);
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 11px;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  thead th:first-child, thead th:nth-child(2) { text-align: left; }
+  tbody tr { border-bottom: 1px solid var(--border); }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: rgba(249,168,37,0.05); }
+  tbody td { padding: 8px 12px; text-align: right; color: var(--text); }
+  tbody td:first-child { text-align: left; font-weight: 700; color: #FFF; }
+  tbody td:nth-child(2) { text-align: left; color: var(--muted); font-size: 11px; }
+  .pos { color: var(--green); }
+  .neg { color: var(--red); }
+  .rank-leader { background: rgba(0,230,118,0.04); }
+  .rank-lagger  { background: rgba(255,82,82,0.04); }
+
+  /* ── THEME TAGS ── */
+  .theme-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .theme-tag {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 1px;
+  }
+
+  /* ── REFERENCE LINKS ── */
+  .ref-section {
+    background: #0A0A18;
+    border-top: 1px solid var(--border);
+    padding: 32px 20px;
+  }
+  .ref-section h3 {
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .ref-grid {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+  }
+  .ref-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    text-decoration: none;
+    display: block;
+    transition: border-color 0.2s;
+  }
+  .ref-card:hover { border-color: var(--gold); }
+  .ref-card .ref-label { font-size: 10px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+  .ref-card .ref-title { font-size: 13px; font-weight: 700; color: #FFF; }
+  .ref-card .ref-date  { font-size: 11px; color: var(--muted); margin-top: 4px; }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: #060610;
+    border-top: 2px solid var(--gold);
+    padding: 28px 20px;
+    text-align: center;
+  }
+  .footer .footer-logo {
+    font-size: 16px;
+    font-weight: 900;
+    color: var(--gold);
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+  .footer .footer-tm {
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 6px;
+    line-height: 1.8;
+  }
+  .footer .footer-disc {
+    max-width: 680px;
+    margin: 12px auto 0;
+    font-size: 10px;
+    color: #555577;
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════ HEADER ═══════════════════════════════ -->
+<div class="header">
+  <div class="brand">DR UVC LLC · Market Intelligence · Post #568</div>
+  <h1>[DR. UV's <span>TOP WORLD ASSETS</span>]</h1>
+  <div class="sub">UVCMI 777™ · B-Screen Rankings · All 7 Timeframes · Wed June 3, 2026 · 9AM</div>
+  <div class="post-badge">POST #568 · MIDDAY EDITION</div>
+</div>
+
+<!-- ═══════════════════════════ §1 YTD HEATMAP ════════════════════════════ -->
+<hr class="divider">
+<div class="section">
+  <div class="section-label">§1 — YTD Performance · B Column (bps)</div>
+  <h2>Leaders vs. Laggards — The World's Best &amp; Worst</h2>
+  <p class="lead">Dr. UV's Top 38 World Assets ranked by the B Column (Y) — Year-to-Date performance in basis points. The gap between leaders and laggards is staggering. Separation is everything.</p>
+
+  <!-- Gemini Graphic — YTD Heatmap (pictorial summary) -->
+  <div class="chart-wrap" style="max-width:520px; margin: 0 auto 24px;">
+    <img data-cdn="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6d65b206-84d2-490b-9209-239d36d082f5_474x721.png"
+         src="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6d65b206-84d2-490b-9209-239d36d082f5_474x721.png"
+         alt="Dr. UV's Top 38 World Assets — YTD Performance B Column (bps) — Leaders vs Laggards"
+         style="max-width:100%; display:block; margin:0 auto;">
+    <div class="chart-caption">DR. UV's World Asset Tracker™ Universe · YTD B Column (bps) · Leaders → Laggards · UVCMI 777™ Status Keys Applied</div>
+  </div>
+
+  <div class="analysis-box">
+    <h3>📊 Chart Read — YTD Separation</h3>
+    <p><strong>Theme 1 — Tech Dominance:</strong> AMD leads the entire universe at <strong class="pos">+15,014 bps</strong> YTD, followed by CSCO (+6,357), ASML (+5,812), TSM (+4,705), and AVGO (+4,289). Technology growth is the unambiguous leader of 2026.</p>
+    <p><strong>Theme 2 — Broad Market Holding:</strong> QQQ (+2,152), VTI (+1,145), SPY (+1,114) — all positive, all green. The broad market is intact but well below the tech sector leaders. UVCMI Bull regime confirmed.</p>
+    <p><strong>Theme 3 — Crypto Cratering:</strong> ETHE at <strong class="neg">−3,800 bps</strong> and GBTC at <strong class="neg">−2,409 bps</strong> are the worst performers in the universe. Digital assets are not participating in the 2026 rally. NFLX (−1,144) is the worst tech name. Financials JPM (−745), META (−904), MSFT (−914) are notable underperformers.</p>
+    <p><strong>ROTI Signal:</strong> High return-on-time-invested is clearly concentrated in Technology (Growth). Rotating away from crypto and mega-cap financials into AMD, ASML, TSM, XOM represents the highest ROTI opportunity per UVCMI 777™.</p>
+  </div>
+
+  <!-- Winners / Losers Cards -->
+  <div class="wl-grid">
+    <div class="wl-card winners">
+      <div class="wl-header">🏆 YTD Leaders (B Column · bps)</div>
+      <div class="wl-row"><span class="sym">AMD</span><span class="name">Advanced Micro Devices</span><span class="val">+15,014</span></div>
+      <div class="wl-row"><span class="sym">CSCO</span><span class="name">Cisco Systems</span><span class="val">+6,357</span></div>
+      <div class="wl-row"><span class="sym">ASML</span><span class="name">ASML Holding</span><span class="val">+5,812</span></div>
+      <div class="wl-row"><span class="sym">TSM</span><span class="name">Taiwan Semiconductor</span><span class="val">+4,705</span></div>
+      <div class="wl-row"><span class="sym">AVGO</span><span class="name">Broadcom Inc</span><span class="val">+4,289</span></div>
+      <div class="wl-row"><span class="sym">XOM</span><span class="name">Exxon Mobil</span><span class="val">+2,516</span></div>
+      <div class="wl-row"><span class="sym">ORCL</span><span class="name">Oracle Corp</span><span class="val">+2,417</span></div>
+    </div>
+    <div class="wl-card losers">
+      <div class="wl-header">📉 YTD Laggards (B Column · bps)</div>
+      <div class="wl-row"><span class="sym">ETHE</span><span class="name">Grayscale Ethereum</span><span class="val">−3,800</span></div>
+      <div class="wl-row"><span class="sym">GBTC</span><span class="name">Grayscale Bitcoin</span><span class="val">−2,409</span></div>
+      <div class="wl-row"><span class="sym">NFLX</span><span class="name">Netflix Inc</span><span class="val">−1,144</span></div>
+      <div class="wl-row"><span class="sym">HD</span><span class="name">Home Depot</span><span class="val">−1,007</span></div>
+      <div class="wl-row"><span class="sym">META</span><span class="name">Meta Platforms</span><span class="val">−904</span></div>
+      <div class="wl-row"><span class="sym">MSFT</span><span class="name">Microsoft Corp</span><span class="val">−914</span></div>
+      <div class="wl-row"><span class="sym">TSLA</span><span class="name">Tesla Inc</span><span class="val">−649</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ §2 FULL TIMEFRAME SCREEN ══════════════════════ -->
+<hr class="divider">
+<div class="section">
+  <div class="section-label">§2 — Full Timeframe · Y, Q, M, W, D, 2H, 1H</div>
+  <h2>All 7 Timeframes — Complete B-Screen Rankings</h2>
+  <p class="lead">Full timeframe view: Y, Q, M, W, D, 2H, 1H. See where each asset stands across every horizon. True leaders dominate multiple timeframes — not just one.</p>
+
+  <div class="chart-wrap">
+    <img data-cdn="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa07b1fed-74fa-4985-8c33-b8d2877b5d9d_658x995.png"
+         src="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa07b1fed-74fa-4985-8c33-b8d2877b5d9d_658x995.png"
+         alt="Dr. UV's Top World Assets — Full B-Screen All Timeframes Y Q M W D 2H 1H">
+    <div class="chart-caption">Dr. UV's Top World Assets · B-Screen · Full Timeframe View: Y, Q, M, W, D, 2H, 1H · UVCMI 777™ · Sorted by YTD B1</div>
+  </div>
+
+  <div class="analysis-box">
+    <h3>📊 Multi-Timeframe Read</h3>
+    <p><strong>AMD Consistent Leadership:</strong> AMD leads across Y (15,071), Q (16,366), M (485), and D — near-universal dominance. This is the definition of high ROTI in the UVCMI 777™ system.</p>
+    <p><strong>CSCO Multi-Frame Strength:</strong> CSCO holds B1 Y: 6,244 with strong Q reading. Monthly rotation is active — the 467 bps monthly reading confirms fresh buyers entering.</p>
+    <p><strong>Crypto Double Compression:</strong> GBTC and ETHE show deep red across Y, Q, M, and W — multi-timeframe alignment to the downside. No recovery signal present across any timeframe.</p>
+    <p><strong>Intraday (2H/1H):</strong> GE shows elevated intraday readings — short-term momentum active. PHYS, PSLV showing short-term stabilization after PM weakness.</p>
+  </div>
+</div>
+
+<!-- ════════════════════════ §3 UVCMI 777 ROTI SCREEN ════════════════════════ -->
+<hr class="divider">
+<div class="section">
+  <div class="section-label">§3 — UVCMI 777™ · High ROTI Signal</div>
+  <h2>True Laggards Exposed — Don't Ask Why. Just Look.</h2>
+  <p class="lead">UVCMI 777™ across all 7 timeframes simultaneously. The orange trend lines tell the story — leaders compounding upward, laggards sinking in every dimension. High ROTI is evident at a glance.</p>
+
+  <div class="alert-box">
+    <div class="alert-icon">⚠️</div>
+    <p><strong>CRITICAL DIVERGENCE:</strong> Crypto (GBTC, ETHE) showing multi-frame UVCMI alignment to the downside while Tech (AMD, CSCO, ASML) maintains Bull+ status across all 7 timeframes. This is the widest asset class divergence in the 38-asset universe. Absolute underperformance in every dimension — Y, Q, M, W, D, 2H, 1H.</p>
+  </div>
+
+  <div class="chart-wrap">
+    <img data-cdn="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Feef56bbf-f6c5-4db4-b78f-9e57833e1220_1921x1003.png"
+         src="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Feef56bbf-f6c5-4db4-b78f-9e57833e1220_1921x1003.png"
+         alt="Dr. UV Top World Assets — UVCMI 777 All Timeframes High ROTI Screen">
+    <div class="chart-caption">UVCMI 777™ · All 7 Timeframes · ST (1H, 2H, 4H) + IT-LT (D, 2D, 3D, W) · Orange lines = UVCMI trend · High ROTI zone: Top 10 · Low ROTI zone: Bottom 8</div>
+  </div>
+
+  <div class="analysis-box">
+    <h3>🎯 UVCMI 777™ Key Reads</h3>
+    <p><strong>Bull+ Zone (Top Tier ROTI):</strong> AMD, CSCO, ASML, TSM — UVCMI readings green/positive across ST and IT-LT. These names show compounding momentum. The orange trend lines slope upward consistently from 1H through W.</p>
+    <p><strong>Mixed/Caution Zone:</strong> AAPL, NVDA, AMZN — positive Y but showing wobble in short-term UVCMI (2H/1H). Watch for rotation signal. RelS vs SPY D is the key confirmation.</p>
+    <p><strong>Bear Zone (True Laggards):</strong> GBTC, ETHE, NFLX, HD, META, MSFT, TSLA — UVCMI negative across multiple frames. The orange lines are crossing downward on the chart. Do not hold without a clear reversal signal.</p>
+    <p><strong>Energy Outlier:</strong> XOM holds +2,516 bps YTD with positive UVCMI D — energy remains a quiet outperformer relative to its low RelS vs SPY volatility. Classic defensive-growth hybrid signal.</p>
+  </div>
+
+  <!-- Active Themes -->
+  <div class="theme-grid">
+    <div class="theme-tag">🚀 Tech Dominance</div>
+    <div class="theme-tag">💀 Crypto Cratering</div>
+    <div class="theme-tag">⚡ Semi Surge</div>
+    <div class="theme-tag">🛢️ Energy Resilience</div>
+    <div class="theme-tag">📉 Mega-Cap Rotation</div>
+    <div class="theme-tag">🎯 High ROTI via UVCMI 777™</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ §4 FULL DATA TABLE ════════════════════════════ -->
+<hr class="divider">
+<div class="section">
+  <div class="section-label">§4 — Full Rankings Table · Top 38 World Assets</div>
+  <h2>Complete Asset Universe — YTD Ranked</h2>
+  <p class="lead">All 38 assets sorted by YTD B Column performance. Price, % Change, RelS vs SPY D included.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align:left">Symbol</th>
+          <th style="text-align:left">Company</th>
+          <th>B1 Y (bps)</th>
+          <th>B1 Q</th>
+          <th>B1 M</th>
+          <th>Price</th>
+          <th>% Chg</th>
+          <th>RelS D</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="rank-leader"><td>AMD</td><td>Advanced Micro Devices</td><td class="pos">+15,071</td><td class="pos">+16,366</td><td class="pos">+485</td><td>537.00</td><td class="pos">+3.52%</td><td class="pos">+348</td><td>Bull+</td></tr>
+        <tr class="rank-leader"><td>CSCO</td><td>Cisco Systems</td><td class="pos">+6,244</td><td class="pos">+6,226</td><td class="neg">−467</td><td>125.91</td><td class="neg">−1.80%</td><td class="pos">+148</td><td>Bull+</td></tr>
+        <tr class="rank-leader"><td>ASML</td><td>ASML Holding</td><td class="pos">+5,874</td><td class="pos">+2,898</td><td class="pos">+504</td><td>1,699.34</td><td class="neg">−0.69%</td><td class="pos">+170</td><td>Bull+</td></tr>
+        <tr class="rank-leader"><td>TSM</td><td>Taiwan Semiconductor</td><td class="pos">+4,748</td><td class="pos">+3,255</td><td class="pos">+705</td><td>447.95</td><td class="pos">+0.59%</td><td class="pos">+175</td><td>Bull+</td></tr>
+        <tr class="rank-leader"><td>AVGO</td><td>Broadcom Inc</td><td class="pos">+4,211</td><td class="pos">+3,903</td><td class="pos">+1,017</td><td>492.73</td><td class="neg">−0.45%</td><td class="pos">+144</td><td>Bull+</td></tr>
+        <tr class="rank-leader"><td>XOM</td><td>Exxon Mobil</td><td class="pos">+2,516</td><td class="neg">−1,122</td><td class="pos">+368</td><td>150.61</td><td class="pos">+0.07%</td><td class="pos">+113</td><td>Bull</td></tr>
+        <tr class="rank-leader"><td>ORCL</td><td>Oracle Corp</td><td class="pos">+2,417</td><td class="pos">+6,452</td><td class="pos">+719</td><td>242.02</td><td class="pos">+0.90%</td><td class="pos">+116</td><td>Bull</td></tr>
+        <tr><td>QQQ</td><td>Invesco QQQ Trust</td><td class="pos">+2,153</td><td class="pos">+2,930</td><td class="pos">+114</td><td>746.61</td><td class="pos">+0.07%</td><td class="pos">+111</td><td>Bull</td></tr>
+        <tr><td>NVDA</td><td>NVIDIA Corporation</td><td class="pos">+1,948</td><td class="pos">+2,769</td><td class="pos">+547</td><td>222.68</td><td class="pos">+0.32%</td><td class="pos">+128</td><td>Bull</td></tr>
+        <tr><td>AAPL</td><td>Apple Inc</td><td class="pos">+1,530</td><td class="pos">+2,372</td><td class="pos">+62</td><td>314.08</td><td class="neg">−0.29%</td><td class="pos">+119</td><td>Bull</td></tr>
+        <tr><td>UNH</td><td>UnitedHealth Group</td><td class="pos">+1,457</td><td class="pos">+3,956</td><td class="neg">−70</td><td>377.63</td><td class="pos">+0.23%</td><td class="pos">+97</td><td>Bull</td></tr>
+        <tr><td>GOOG</td><td>Alphabet Inc</td><td class="pos">+1,290</td><td class="pos">+2,350</td><td class="neg">−388</td><td>354.30</td><td class="neg">−1.18%</td><td class="pos">+171</td><td>Bull</td></tr>
+        <tr><td>KO</td><td>Coca-Cola Co</td><td class="pos">+1,217</td><td class="pos">+312</td><td class="neg">−75</td><td>78.45</td><td class="neg">−0.05%</td><td class="pos">+85</td><td>Bull</td></tr>
+        <tr><td>VTI</td><td>Vanguard Total Stock</td><td class="pos">+1,152</td><td class="pos">+1,655</td><td class="pos">+35</td><td>373.86</td><td class="neg">−0.34%</td><td class="pos">+100</td><td>Bull</td></tr>
+        <tr><td>SPY</td><td>State Street SPDR S&amp;P</td><td class="pos">+1,117</td><td class="pos">+1,667</td><td class="pos">+21</td><td>758.14</td><td class="neg">−0.20%</td><td>—</td><td>Bull</td></tr>
+        <tr><td>AMZN</td><td>Amazon.com Inc</td><td class="pos">+1,074</td><td class="pos">+2,273</td><td class="neg">−334</td><td>255.73</td><td class="neg">−0.37%</td><td class="pos">+99</td><td>Bull</td></tr>
+        <tr><td>COST</td><td>Costco Wholesale</td><td class="pos">+1,041</td><td class="neg">−445</td><td class="neg">−44</td><td>952.10</td><td class="neg">−0.16%</td><td class="pos">+70</td><td>Neutral</td></tr>
+        <tr><td>ISSXF</td><td>iShares Core S&amp;P 500</td><td class="pos">+958</td><td class="pos">+1,268</td><td class="pos">+0</td><td>55.5379</td><td>0.00%</td><td>—</td><td>—</td></tr>
+        <tr><td>MRK</td><td>Merck &amp; Co</td><td class="pos">+1,004</td><td class="neg">−373</td><td class="neg">−245</td><td>115.83</td><td class="neg">−0.62%</td><td class="pos">+118</td><td>Neutral</td></tr>
+        <tr><td>JNJ</td><td>Johnson &amp; Johnson</td><td class="pos">+800</td><td class="neg">−407</td><td class="neg">−101</td><td>223.00</td><td class="pos">+0.13%</td><td class="pos">+112</td><td>Neutral</td></tr>
+        <tr><td>GE</td><td>GE Aerospace</td><td class="pos">+203</td><td class="pos">+1,076</td><td class="neg">−491</td><td>314.25</td><td class="pos">+0.13%</td><td class="pos">+102</td><td>Bull</td></tr>
+        <tr><td>PHYS</td><td>Sprott Physical Gold</td><td class="pos">+221</td><td class="neg">−407</td><td class="neg">−199</td><td>33.75</td><td class="neg">−0.90%</td><td class="pos">+103</td><td>Neutral</td></tr>
+        <tr><td>WMT</td><td>Walmart Inc</td><td class="pos">+124</td><td class="neg">−425</td><td class="neg">−334</td><td>112.75</td><td class="neg">−0.17%</td><td class="pos">+60</td><td>Neutral</td></tr>
+        <tr><td>PSLV</td><td>Sprott Physical Silver</td><td class="neg">−8</td><td class="neg">−382</td><td class="neg">−187</td><td>23.62</td><td class="neg">−0.48%</td><td class="pos">+169</td><td>Bear</td></tr>
+        <tr><td>LLY</td><td>Eli Lilly &amp; Company</td><td class="neg">−96</td><td class="pos">+1,579</td><td class="neg">−382</td><td>1,065.00</td><td class="neg">−0.00%</td><td class="pos">+113</td><td>Neutral</td></tr>
+        <tr><td>BAC</td><td>Bank of America</td><td class="neg">−380</td><td class="pos">+716</td><td class="pos">+124</td><td>52.18</td><td class="neg">−0.43%</td><td class="pos">+91</td><td>Bear</td></tr>
+        <tr><td>ABBV</td><td>AbbVie Inc</td><td class="neg">−590</td><td class="neg">−118</td><td class="neg">−129</td><td>213.90</td><td class="neg">−0.04%</td><td class="pos">+89</td><td>Bear</td></tr>
+        <tr><td>BRKB</td><td>Berkshire Hathaway</td><td class="neg">−637</td><td class="pos">+170</td><td class="neg">−81</td><td>470.65</td><td class="pos">+0.14%</td><td class="pos">+73</td><td>Bear</td></tr>
+        <tr class="rank-lagger"><td>TSLA</td><td>Tesla Inc</td><td class="neg">−649</td><td class="pos">+1,288</td><td class="neg">−371</td><td>419.33</td><td class="neg">−0.58%</td><td class="pos">+95</td><td>Bear</td></tr>
+        <tr class="rank-lagger"><td>JPM</td><td>JPMorgan Chase</td><td class="neg">−745</td><td class="pos">+137</td><td class="neg">−37</td><td>298.25</td><td class="neg">−0.98%</td><td class="pos">+88</td><td>Bear</td></tr>
+        <tr class="rank-lagger"><td>META</td><td>Meta Platforms Inc</td><td class="neg">−808</td><td class="pos">+511</td><td class="neg">−492</td><td>601.32</td><td class="pos">+0.18%</td><td class="pos">+70</td><td>Bear</td></tr>
+        <tr class="rank-lagger"><td>MSFT</td><td>Microsoft Corp</td><td class="neg">−938</td><td class="pos">+1,839</td><td class="neg">−207</td><td>438.70</td><td class="neg">−0.08%</td><td class="pos">+78</td><td>Bear</td></tr>
+        <tr class="rank-lagger"><td>V</td><td>Visa Inc</td><td class="neg">−965</td><td class="pos">+485</td><td class="neg">−280</td><td>317.20</td><td class="pos">+0.50%</td><td class="pos">+69</td><td>Bear</td></tr>
+        <tr class="rank-lagger"><td>HD</td><td>Home Depot Inc</td><td class="neg">−1,011</td><td class="neg">−598</td><td class="neg">−342</td><td>309.66</td><td class="neg">−0.65%</td><td class="pos">+66</td><td>Bear</td></tr>
+        <tr class="rank-lagger"><td>NFLX</td><td>Netflix Inc</td><td class="neg">−1,145</td><td class="neg">−3,385</td><td class="neg">−346</td><td>82.96</td><td class="neg">−0.47%</td><td class="pos">+55</td><td>Bear</td></tr>
+        <tr class="rank-lagger"><td>GBTC</td><td>Grayscale Bitcoin Trust</td><td class="neg">−2,383</td><td class="neg">−151</td><td class="neg">−466</td><td>51.92</td><td class="pos">+0.21%</td><td class="pos">+53</td><td>Bear</td></tr>
+        <tr class="rank-lagger"><td>ETHE</td><td>Grayscale Ethereum</td><td class="neg">−3,779</td><td class="neg">−1,110</td><td class="neg">−701</td><td>15.16</td><td class="pos">+0.20%</td><td class="pos">+60</td><td>Bear</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ═════════════════════ REFERENCE LINKS ═════════════════════════════════ -->
+<div class="ref-section">
+  <h3>📚 Related Posts &amp; Trackers</h3>
+  <div class="ref-grid">
+    <a class="ref-card" href="https://druvc.com/trackers/060226_Master_Tracker.html" target="_blank">
+      <div class="ref-label">Post #567</div>
+      <div class="ref-title">060226 Master Tracker</div>
+      <div class="ref-date">June 2, 2026 · 37 Assets</div>
+    </a>
+    <a class="ref-card" href="https://druvc.com/trackers/052926_Crypto_Tracker.html" target="_blank">
+      <div class="ref-label">Post #566</div>
+      <div class="ref-title">Crypto Tracker 052926</div>
+      <div class="ref-date">May 29, 2026 · 38 Crypto Symbols</div>
+    </a>
+    <a class="ref-card" href="https://druvc.com/trackers/052926_SS36_Tracker.html" target="_blank">
+      <div class="ref-label">Post #565</div>
+      <div class="ref-title">SS36 Sector Tracker</div>
+      <div class="ref-date">May 29, 2026 · 36 S&amp;P Sectors</div>
+    </a>
+    <a class="ref-card" href="https://druvc.com/trackers/052926_Master_Tracker.html" target="_blank">
+      <div class="ref-label">Post #564</div>
+      <div class="ref-title">Master Tracker 052926</div>
+      <div class="ref-date">May 29, 2026 · 37 Asset Classes</div>
+    </a>
+    <a class="ref-card" href="https://druvc.com/trackers/052726_MAG20_Tracker.html" target="_blank">
+      <div class="ref-label">Post #563</div>
+      <div class="ref-title">MAG20 Tracker</div>
+      <div class="ref-date">May 27, 2026 · MAG7 + PM + Indices</div>
+    </a>
+    <a class="ref-card" href="https://druvc.com/trackers/052626_DJ36_Tracker.html" target="_blank">
+      <div class="ref-label">Post #562</div>
+      <div class="ref-title">DJ36 Tracker</div>
+      <div class="ref-date">May 26, 2026 · Dow Jones 36</div>
+    </a>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ FOOTER ════════════════════════════════════ -->
+<div class="footer">
+  <div class="footer-logo">DR UVC LLC</div>
+  <div class="footer-tm">
+    UVCMI 777™ · DR. UV's World Asset Tracker™ · DR UVC Market Insights™<br>
+    DR UVC Universal™ · B-Screen™ · RelS vs SPY™
+  </div>
+  <div class="footer-tm" style="color:#777799; font-size:12px; margin-top:8px;">
+    Post #568 · Wed June 3, 2026 · 9AM Midday Edition · druvc.com
+  </div>
+  <div class="footer-disc">
+    © 2026 DR UVC LLC. All rights reserved. All trademarks are property of DR UVC LLC.
+    This content is for educational and informational purposes only and does not constitute
+    financial, investment, or trading advice. Past performance is not indicative of future results.
+    UVCMI 777™ readings are proprietary model outputs. Always do your own research.
+    <br>druvc.com · druvc.substack.com
+  </div>
+</div>
+
+</body>
+</html>
