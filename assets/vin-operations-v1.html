@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Vedic Multi-Method Battle Matrix</title>
+    <style>
+        /* ── Reset & Base ── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: #020617;       /* slate-950 */
+            color: #f1f5f9;            /* slate-100 */
+            min-height: 100vh;
+            font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+            font-size: 16px;
+        }
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; }
+        input[type=number] { -moz-appearance: textfield; }
+
+        /* ── Vinculum overline ── */
+        .vinculum-text {
+            text-decoration: overline !important;
+            text-decoration-thickness: 2px !important;
+        }
+
+        /* ── Header ── */
+        header {
+            background: linear-gradient(to right, #020617, #1e1b4b, #020617);
+            border-bottom: 1px solid rgba(99,102,241,0.2);
+            padding: 1.5rem 1rem;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 1.875rem;
+            font-weight: 900;
+            letter-spacing: 0.025em;
+            color: #c7d2fe;            /* indigo-200 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        header h1 svg { color: #818cf8; width: 2rem; height: 2rem; flex-shrink: 0; }
+        header p {
+            color: #94a3b8;            /* slate-400 */
+            font-size: 0.75rem;
+            margin-top: 0.25rem;
+            max-width: 42rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ── Main layout ── */
+        main {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        /* ── Control bar ── */
+        .control-bar {
+            background: #0f172a;       /* slate-900 */
+            border: 1px solid #1e293b; /* slate-800 */
+            border-radius: 1.5rem;
+            padding: 1.25rem;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            justify-content: space-between;
+            align-items: center;
+        }
+        @media (min-width: 1024px) {
+            .control-bar { flex-direction: row; }
+        }
+        .input-row {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
+            align-items: center;
+        }
+        @media (min-width: 640px) {
+            .input-row { flex-direction: row; }
+            .input-row > .input-wrap { width: 8rem; }
+        }
+        @media (min-width: 1024px) {
+            .input-row { width: auto; }
+        }
+        .input-wrap { width: 100%; }
+        .input-label {
+            font-size: 0.625rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #818cf8;            /* indigo-400 */
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+        .num-input {
+            width: 100%;
+            height: 2.75rem;
+            padding: 0 0.75rem;
+            background: #020617;
+            border: 1px solid #334155; /* slate-700 */
+            border-radius: 0.75rem;
+            font-family: ui-monospace, monospace;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #fbbf24;            /* amber-400 */
+            text-align: center;
+            outline: none;
+            transition: border-color 0.15s;
+        }
+        .num-input:focus { border-color: #6366f1; }
+
+        /* ── Op selector ── */
+        .op-wrap { display: flex; flex-direction: column; }
+        .op-sub-label {
+            font-size: 0.625rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #64748b;            /* slate-500 */
+            display: block;
+            margin-bottom: 0.25rem;
+            text-align: center;
+        }
+        .op-group {
+            display: flex;
+            background: #020617;
+            padding: 0.25rem;
+            border-radius: 0.75rem;
+            border: 1px solid #1e293b;
+        }
+        .op-btn {
+            padding: 0.375rem 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: all 0.15s;
+            background: #0f172a;
+            color: #94a3b8;
+        }
+        .op-btn.active { background: #4f46e5; color: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.4); }
+
+        /* ── Master output ── */
+        .master-out {
+            background: #020617;
+            padding: 0.625rem 1.5rem;
+            border-radius: 1rem;
+            border: 1px solid #1e293b;
+            text-align: center;
+            width: 100%;
+        }
+        @media (min-width: 1024px) {
+            .master-out { width: auto; text-align: right; }
+        }
+        .master-out-label {
+            font-size: 0.625rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #64748b;
+        }
+        #masterFinalOutput {
+            font-size: 1.875rem;
+            font-weight: 900;
+            color: #34d399;            /* emerald-400 */
+            letter-spacing: -0.025em;
+        }
+
+        /* ── Card grid ── */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        @media (min-width: 1024px) {
+            .card-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        /* ── Method card ── */
+        .method-card {
+            background: #0f172a;
+            border: 1px solid #1e293b;
+            border-radius: 1.5rem;
+            padding: 1.25rem;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .card-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #1e293b;
+        }
+        .card-title svg { width: 1rem; height: 1rem; flex-shrink: 0; }
+        .card-desc {
+            font-size: 0.6875rem;
+            color: #94a3b8;
+            margin-bottom: 1rem;
+        }
+        .process-box {
+            background: #020617;
+            padding: 1rem;
+            border-radius: 1rem;
+            font-family: ui-monospace, monospace;
+            font-size: 0.875rem;
+            border: 1px solid #1e293b;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 140px;
+        }
+        .card-footer {
+            margin-top: 1rem;
+            padding: 0.75rem;
+            border-radius: 0.75rem;
+            text-align: center;
+            font-size: 0.6875rem;
+        }
+
+        /* Per-card accent colors */
+        .card-trad .card-title  { color: #fb7185; }   /* rose-400 */
+        .card-trad .card-footer { background: rgba(136,19,55,0.2); border: 1px solid rgba(159,18,57,0.4); color: #fda4af; }
+        .card-vedic .card-title { color: #a78bfa; }   /* violet-400 */
+        .card-vedic .card-footer{ background: rgba(76,29,149,0.2); border: 1px solid rgba(91,33,182,0.4); color: #c4b5fd; }
+        .card-vinc .card-title  { color: #34d399; }   /* emerald-400 */
+        .card-vinc .card-footer { background: rgba(6,78,59,0.2); border: 1px solid rgba(6,95,70,0.4); color: #6ee7b7; }
+
+        /* ── Utility classes used in dynamic HTML ── */
+        .text-right   { text-align: right; }
+        .text-center  { text-align: center; }
+        .select-none  { user-select: none; }
+        .space-y-1 > * + * { margin-top: 0.25rem; }
+        .space-y-2 > * + * { margin-top: 0.5rem; }
+        .space-y-3 > * + * { margin-top: 0.75rem; }
+        .border-b-row { border-bottom: 1px solid #334155; padding-bottom: 0.25rem; }
+        .text-slate-300 { color: #cbd5e1; }
+        .text-slate-400 { color: #94a3b8; }
+        .text-slate-500 { color: #64748b; }
+        .text-slate-600 { color: #475569; }
+        .text-amber-400 { color: #fbbf24; }
+        .text-violet-400{ color: #a78bfa; }
+        .text-purple-300{ color: #d8b4fe; }
+        .text-emerald-400{color: #34d399; }
+        .font-bold  { font-weight: 700; }
+        .font-mono  { font-family: ui-monospace, monospace; }
+        .text-xs  { font-size: 0.75rem; }
+        .text-sm  { font-size: 0.875rem; }
+        .text-base{ font-size: 1rem; }
+        .text-lg  { font-size: 1.125rem; }
+        .text-xl  { font-size: 1.25rem; }
+        .tracking-widest { letter-spacing: 0.1em; }
+        .tracking-wider  { letter-spacing: 0.05em; }
+        .mt-1 { margin-top: 0.25rem; }
+        .mt-2 { margin-top: 0.5rem; }
+        .px-2 { padding-left: 0.5rem; padding-right: 0.5rem; }
+        .px-3 { padding-left: 0.75rem; padding-right: 0.75rem; }
+        .py-1 { padding-top: 0.25rem; padding-bottom: 0.25rem; }
+        .py-1\.5 { padding-top: 0.375rem; padding-bottom: 0.375rem; }
+        .rounded   { border-radius: 0.25rem; }
+        .rounded-lg{ border-radius: 0.5rem; }
+        .rounded-xl{ border-radius: 0.75rem; }
+        .inline-block { display: inline-block; }
+        .w-full { width: 100%; }
+        .bg-inline-dark { background: #0f172a; border: 1px solid #1e293b; }
+        .bg-inline-darker { background: #020617; padding: 0.375rem; border-radius: 0.5rem; border: 1px solid #0f172a; }
+        .uppercase { text-transform: uppercase; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>
+            <!-- swords icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5"/><line x1="13" y1="19" x2="19" y2="13"/>
+                <line x1="16" y1="16" x2="20" y2="20"/><line x1="19" y1="21" x2="21" y2="19"/>
+                <polyline points="14.5 6.5 18 3 21 3 21 6 17.5 9.5"/><line x1="5" y1="14" x2="8.5" y2="17.5"/>
+                <line x1="13" y1="19" x2="19" y2="13"/><line x1="3" y1="21" x2="5" y2="19"/>
+            </svg>
+            The Multi-Method Math Engine
+        </h1>
+        <p>Compare Traditional, Standard Vedic, and Vedic Vinculum pathways side-by-side to track exactly how compliments shatter calculation complexity!</p>
+    </header>
+
+    <main>
+
+        <!-- Control bar -->
+        <section class="control-bar">
+            <div class="input-row">
+                <div class="input-wrap">
+                    <label class="input-label" for="inputA">Number A</label>
+                    <input type="number" id="inputA" value="29" min="10" max="99" class="num-input">
+                </div>
+
+                <div class="op-wrap">
+                    <span class="op-sub-label">Operation</span>
+                    <div class="op-group">
+                        <button id="op_add" onclick="setOperation('add')" class="op-btn">ADD</button>
+                        <button id="op_sub" onclick="setOperation('sub')" class="op-btn">SUB</button>
+                        <button id="op_mul" onclick="setOperation('mul')" class="op-btn active">MULTIPLY</button>
+                    </div>
+                </div>
+
+                <div class="input-wrap">
+                    <label class="input-label" for="inputB">Number B</label>
+                    <input type="number" id="inputB" value="29" min="10" max="99" class="num-input">
+                </div>
+            </div>
+
+            <div class="master-out">
+                <span class="master-out-label">Verified System Output</span>
+                <div id="masterFinalOutput">841</div>
+            </div>
+        </section>
+
+        <!-- Method cards -->
+        <section class="card-grid">
+
+            <!-- Traditional -->
+            <div class="method-card card-trad">
+                <div>
+                    <div class="card-title">
+                        <!-- hourglass icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M5 22h14"/><path d="M5 2h14"/>
+                            <path d="M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22"/>
+                            <path d="M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2"/>
+                        </svg>
+                        <span>1. Traditional School Way</span>
+                    </div>
+                    <p class="card-desc">Standard long multiplication processing map requiring stacked column alignments and double carry steps.</p>
+                    <div id="tradProcessingBox" class="process-box"></div>
+                </div>
+                <div class="card-footer">⚠️ High processing load due to multi-row additions.</div>
+            </div>
+
+            <!-- Standard Vedic -->
+            <div class="method-card card-vedic">
+                <div>
+                    <div class="card-title">
+                        <!-- git-fork icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="12" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/>
+                            <path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"/><line x1="12" y1="12" x2="12" y2="15"/>
+                        </svg>
+                        <span>2. Standard Vedic Way</span>
+                    </div>
+                    <p class="card-desc">Vertical and Crosswise processing formula (Urdhva-Tiryagbhyam). Splits calculations into single-line mental zones.</p>
+                    <div id="vedicProcessingBox" class="process-box"></div>
+                </div>
+                <div class="card-footer">💡 One single row of math, but requires carrying handling.</div>
+            </div>
+
+            <!-- Vinculum -->
+            <div class="method-card card-vinc">
+                <div>
+                    <div class="card-title">
+                        <!-- zap icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                        </svg>
+                        <span>3. Vedic Vinculum Superpower</span>
+                    </div>
+                    <p class="card-desc">Converts large numbers into small, effortless configurations using negative bar balances. Destroys carry weight!</p>
+                    <div id="vinculumProcessingBox" class="process-box"></div>
+                </div>
+                <div class="card-footer">⚡ Zero carrying steps needed. Pure low-number matrix!</div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script>
+        let currentOperation = 'mul';
+
+        const elA = document.getElementById('inputA');
+        const elB = document.getElementById('inputB');
+        const elMasterOut = document.getElementById('masterFinalOutput');
+        const boxTrad  = document.getElementById('tradProcessingBox');
+        const boxVedic = document.getElementById('vedicProcessingBox');
+        const boxVinc  = document.getElementById('vinculumProcessingBox');
+
+        [elA, elB].forEach(input => input.addEventListener('input', computeMatrixWorkstreams));
+
+        function setOperation(op) {
+            currentOperation = op;
+            ['op_add','op_sub','op_mul'].forEach(id => {
+                document.getElementById(id).classList.remove('active');
+            });
+            document.getElementById('op_' + op).classList.add('active');
+            computeMatrixWorkstreams();
+        }
+
+        function convertToVinculumPair(val) {
+            let units = val % 10;
+            let tens  = Math.floor(val / 10);
+            if (units > 5) return { tens: tens + 1, units: 10 - units, isBar: true };
+            return { tens, units, isBar: false };
+        }
+
+        function computeMatrixWorkstreams() {
+            let valA = parseInt(elA.value) || 0;
+            let valB = parseInt(elB.value) || 0;
+            let finalAns = 0;
+            if (currentOperation === 'add') finalAns = valA + valB;
+            if (currentOperation === 'sub') finalAns = valA - valB;
+            if (currentOperation === 'mul') finalAns = valA * valB;
+            elMasterOut.textContent = finalAns.toLocaleString();
+            renderTraditionalWorkstream(valA, valB, finalAns);
+            renderStandardVedicWorkstream(valA, valB);
+            renderVinculumWorkstream(valA, valB);
+        }
+
+        function renderTraditionalWorkstream(a, b, finalAns) {
+            if (currentOperation !== 'mul') {
+                const sym = currentOperation === 'add' ? '+' : '−';
+                boxTrad.innerHTML = `<div style="color:#94a3b8;font-size:1.1rem;">${a} ${sym} ${b} = <span style="color:#fbbf24;font-weight:700;">${finalAns}</span></div>`;
+                return;
+            }
+            let step1 = a * (b % 10);
+            let step2 = a * Math.floor(b / 10) * 10;
+            boxTrad.innerHTML = `
+                <div class="text-right select-none text-slate-300 space-y-1" style="min-width:120px;">
+                    <div>${a}</div>
+                    <div class="border-b-row">× ${b}</div>
+                    <div class="text-slate-400 text-xs">${step1} <span style="font-size:0.625rem;color:#475569">(${a}×${b%10})</span></div>
+                    <div class="text-slate-400 text-xs border-b-row">+ ${step2} <span style="font-size:0.625rem;color:#475569">(${a}×${Math.floor(b/10)}0)</span></div>
+                    <div class="text-amber-400 font-bold text-base mt-1">${a * b}</div>
+                </div>`;
+        }
+
+        function renderStandardVedicWorkstream(a, b) {
+            if (currentOperation !== 'mul') {
+                boxVedic.innerHTML = `<div style="color:#64748b;font-size:0.8rem;text-align:center;">Switch to Multiply to unlock grid comparison.</div>`;
+                return;
+            }
+            let a1 = Math.floor(a/10), a0 = a%10;
+            let b1 = Math.floor(b/10), b0 = b%10;
+            let left  = a1*b1;
+            let cross = (a1*b0) + (a0*b1);
+            let right = a0*b0;
+            boxVedic.innerHTML = `
+                <div class="text-center space-y-3 w-full">
+                    <div class="text-xs text-slate-500">Urdhva-Tiryagbhyam Setup:</div>
+                    <div class="text-xl font-bold text-violet-400 font-mono tracking-widest">${left} / ${cross} / ${right}</div>
+                    <div style="font-size:0.625rem;color:#64748b;font-family:ui-monospace,monospace;">
+                        [${a1}×${b1}] / [(${a1}×${b0})+(${a0}×${b1})] / [${a0}×${b0}]
+                    </div>
+                    <div class="text-xs text-slate-400 mt-2 bg-inline-dark px-3 py-1 rounded-lg inline-block">
+                        Carry Steps: Balance digits right-to-left to output final value.
+                    </div>
+                </div>`;
+        }
+
+        function renderVinculumWorkstream(a, b) {
+            if (currentOperation !== 'mul') {
+                boxVinc.innerHTML = `<div style="color:#64748b;font-size:0.8rem;text-align:center;">Switch to Multiply to unlock grid comparison.</div>`;
+                return;
+            }
+            let vA = convertToVinculumPair(a);
+            let vB = convertToVinculumPair(b);
+            let strA = `${vA.tens}${vA.isBar ? `<span class="vinculum-text">${vA.units}</span>` : vA.units}`;
+            let strB = `${vB.tens}${vB.isBar ? `<span class="vinculum-text">${vB.units}</span>` : vB.units}`;
+            let signA = vA.isBar ? -vA.units : vA.units;
+            let signB = vB.isBar ? -vB.units : vB.units;
+            let left  = vA.tens * vB.tens;
+            let cross = (vA.tens * signB) + (signA * vB.tens);
+            let right = signA * signB;
+            let crossDisplay = cross < 0 ? `<span class="vinculum-text">${Math.abs(cross)}</span>` : cross;
+            let rightDisplay = right < 0 ? `<span class="vinculum-text">${Math.abs(right)}</span>` : right;
+            boxVinc.innerHTML = `
+                <div class="text-center space-y-2 w-full">
+                    <div style="font-size:0.6875rem;color:#64748b;">Transformed Lightweight Codes:</div>
+                    <div class="font-bold font-mono text-emerald-400 bg-inline-dark px-3 py-1 rounded-lg inline-block" style="font-size:0.9rem;">
+                        ${strA} × ${strB}
+                    </div>
+                    <div class="text-xs text-slate-500 mt-2">Processed Single-Line Matrix:</div>
+                    <div class="text-lg font-mono font-bold text-purple-300">${left} / ${crossDisplay} / ${rightDisplay}</div>
+                    <div style="font-size:0.625rem;color:#64748b;background:#020617;padding:0.375rem 0.75rem;border-radius:0.5rem;border:1px solid #0f172a;margin-top:0.25rem;">
+                        Meaning: ${left*100} + (${cross*10}) + (${right}) = ${a*b}
+                    </div>
+                </div>`;
+        }
+
+        computeMatrixWorkstreams();
+    </script>
+</body>
+</html>
