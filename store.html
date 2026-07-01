@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Store — Dr. UVC Market Insights™</title>
+<meta name="description" content="Reports, primers & tools from Dr. UVC Market Insights™ — instant download. UVCMI 777™ methodology, relative strength reports, and more.">
+<meta name="robots" content="index, follow, noai, noimageai">
+<meta name="copyright" content="DR UVC LLC">
+<meta name="author" content="Dr. UV — DR UVC LLC">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  /* store-specific additions (kept minimal; inherits brand from style.css) */
+  .store-head { background:var(--dark); color:#fff; text-align:center; padding:48px 20px 40px; border-bottom:3px solid var(--gold); }
+  .store-head .hero-eyebrow { font-size:11px; letter-spacing:3px; color:#aaa; margin-bottom:10px; text-transform:uppercase; }
+  .store-head h1 { font-size:32px; font-weight:900; color:var(--gold); letter-spacing:2px; margin-bottom:10px; }
+  .store-head p { color:#ccc; max-width:620px; margin:0 auto; font-size:14px; line-height:1.7; }
+  .prod-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:18px; margin-top:20px; }
+  .prod-card { background:var(--card-bg); border:1px solid var(--border); border-left:5px solid var(--gold); border-radius:8px; padding:22px 22px 20px; display:flex; flex-direction:column; transition:box-shadow .2s, transform .2s; }
+  .prod-card:hover { box-shadow:0 4px 20px rgba(0,0,0,.10); transform:translateY(-2px); }
+  .prod-card .p-tag { align-self:flex-start; font-size:10px; font-weight:700; padding:3px 8px; border-radius:20px; letter-spacing:.5px; text-transform:uppercase; background:#fff8e1; color:#f57f17; margin-bottom:10px; }
+  .prod-card .p-title { font-size:16px; font-weight:800; color:var(--dark); line-height:1.3; margin-bottom:8px; }
+  .prod-card .p-desc { font-size:13px; color:var(--subtext); line-height:1.65; margin-bottom:16px; flex:1; }
+  .prod-card .p-foot { display:flex; align-items:center; justify-content:space-between; gap:10px; }
+  .prod-card .p-price { font-size:22px; font-weight:900; color:var(--blue); }
+  .buy-btn { background:var(--gold); color:var(--dark); font-weight:900; font-size:13px; padding:10px 22px; border-radius:6px; text-decoration:none; letter-spacing:.5px; white-space:nowrap; transition:opacity .2s; }
+  .buy-btn:hover { opacity:.85; }
+  .buy-btn.soon { background:#eee; color:#999; pointer-events:none; }
+  .store-note { font-size:12px; color:var(--subtext); text-align:center; margin-top:26px; line-height:1.7; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="index.html">Dr. UVC Market Insights™</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="trackers/index.html">Trackers</a>
+    <a href="store.html" class="active">Store</a>
+    <a href="about.html">About</a>
+    <a href="https://uvc9876.substack.com" target="_blank">Substack ↗</a>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<div class="store-head">
+  <div class="hero-eyebrow">UVCMI 777™ · Instant Download</div>
+  <h1>The Store</h1>
+  <p>Reports, primers, and tools built on the UVCMI 777™ engine. Secure checkout, instant access — pay with card, Apple&nbsp;Pay, or Google&nbsp;Pay.</p>
+</div>
+
+<!-- PRODUCTS -->
+<div class="container section-wrap">
+  <div class="section-heading">Digital Products</div>
+  <div class="section-title">Reports &amp; Primers</div>
+  <div id="prodGrid" class="prod-grid"><!-- rendered by JS from PRODUCTS below --></div>
+  <div class="store-note">
+    Secure checkout powered by Stripe. All sales are for digital products delivered instantly after purchase.<br>
+    © 2026 DR UVC LLC · For informational purposes only · Not financial advice.
+  </div>
+</div>
+
+<!-- SUBSTACK CTA -->
+<div class="container section-wrap">
+  <div class="cta-block">
+    <h2>Want everything, every session?</h2>
+    <p>Subscribe for the full tracker suite delivered to your inbox — Master, SS36, and more.</p>
+    <a href="https://uvc9876.substack.com/july4" target="_blank" class="btn-gold">Start Free for July → Subscribe</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Dr. UVC Market Insights™ · UVCMI 777™</div>
+  © 2026 <strong>DR UVC LLC</strong>. All Rights Reserved. Proprietary and Confidential.<br>
+  UVCMI 777™ · ROTI™ · DJ36 Tracker™ · SS36 Tracker™ are trademarks of DR UVC LLC.<br><br>
+  <a href="index.html">Home</a> · <a href="trackers/index.html">Trackers</a> · <a href="about.html">About</a> · <a href="https://uvc9876.substack.com">Substack</a><br><br>
+  <em>Disclaimer: For informational purposes only; not financial advice. Past performance does not guarantee future results.</em>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PRODUCT CONFIG  —  Dr. UV: edit this list to add/remove products.
+     For each product, paste your Stripe Payment Link into "buy".
+     (Create links in Stripe → Payment Links → New. Set the price,
+      turn on "collect card / Apple Pay / Google Pay", and set the
+      after-payment redirect to your download/thank-you page.)
+     Leave buy:"" to show a "Coming soon" button.
+════════════════════════════════════════════════════════════ -->
+<script>
+const PRODUCTS = [
+  {
+    tag:   "Primer",
+    title: "Relative Strength Report",
+    desc:  "A focused read on cross-asset and sector relative strength through the UVCMI 777™ lens — who's leading, who's lagging, and where the rotation is heading.",
+    price: "$4.99",
+    buy:   "https://buy.stripe.com/6oU9AM8auaKP8keePdfAc00"
+  },
+  {
+    tag:   "Methodology",
+    title: "UVCMI 777™ Methodology",
+    desc:  "The full methodology primer: B Score, ST (1H–4H), IT/LT (1D–1W), and how the seven-timeframe read is constructed. The foundation behind every tracker.",
+    price: "$6.99",
+    buy:   "https://buy.stripe.com/dRm9AMbmGaKPcAu6iHfAc01"
+  },
+  {
+    tag:   "Manual",
+    title: "TPPS Manual",
+    desc:  "The TPPS manual — a practical guide to applying the framework to your own positions, timeframes, and risk profile.",
+    price: "$9.99",
+    buy:   "https://buy.stripe.com/3cIcMYgH04mr43Y0YnfAc02"
+  }
+];
+
+(function renderStore(){
+  const g = document.getElementById('prodGrid');
+  g.innerHTML = PRODUCTS.map(p => {
+    const btn = p.buy
+      ? `<a class="buy-btn" href="${p.buy}">Buy — ${p.price}</a>`
+      : `<span class="buy-btn soon">Coming soon</span>`;
+    return `<div class="prod-card">
+      <span class="p-tag">${p.tag}</span>
+      <div class="p-title">${p.title}</div>
+      <div class="p-desc">${p.desc}</div>
+      <div class="p-foot"><span class="p-price">${p.price}</span>${btn}</div>
+    </div>`;
+  }).join('');
+})();
+</script>
+
+</body>
+</html>

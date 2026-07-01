@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thank You — Dr. UVC Market Insights™</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .ty-wrap { max-width:640px; margin:0 auto; padding:60px 24px; text-align:center; }
+  .ty-check { font-size:52px; color:var(--green); margin-bottom:10px; }
+  .ty-wrap h1 { font-size:28px; font-weight:900; color:var(--dark); letter-spacing:1px; margin-bottom:8px; }
+  .ty-wrap .ty-prod { font-size:16px; color:var(--blue); font-weight:800; margin-bottom:20px; }
+  .ty-wrap p { color:var(--subtext); font-size:14px; line-height:1.7; margin-bottom:24px; }
+  .dl-btn { display:inline-block; background:var(--gold); color:var(--dark); font-weight:900; font-size:15px; padding:14px 36px; border-radius:6px; text-decoration:none; letter-spacing:1px; }
+  .dl-btn:hover { opacity:.85; }
+  .ty-small { font-size:12px; color:var(--gray); margin-top:26px; line-height:1.7; }
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-brand" href="index.html">Dr. UVC Market Insights™</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="trackers/index.html">Trackers</a>
+    <a href="store.html">Store</a>
+    <a href="about.html">About</a>
+    <a href="https://uvc9876.substack.com" target="_blank">Substack ↗</a>
+  </div>
+</nav>
+
+<div class="ty-wrap">
+  <div class="ty-check">✓</div>
+  <h1>Thank you for your purchase!</h1>
+  <div class="ty-prod" id="prodName">Your download is ready.</div>
+  <p id="prodMsg">Click below to download your file. A receipt has also been emailed to you by Stripe.</p>
+  <a class="dl-btn" id="dlBtn" href="#">Download →</a>
+  <div class="ty-small">
+    Trouble downloading? Email <a href="mailto:uvcllc@icloud.com" style="color:var(--blue);">uvcllc@icloud.com</a> with your receipt.<br>
+    © 2026 DR UVC LLC · This file is for your personal use. Redistribution is prohibited.
+  </div>
+</div>
+
+<footer>
+  <div class="footer-brand">Dr. UVC Market Insights™ · UVCMI 777™</div>
+  © 2026 <strong>DR UVC LLC</strong>. All Rights Reserved.<br>
+  <a href="index.html">Home</a> · <a href="store.html">Store</a> · <a href="https://uvc9876.substack.com">Substack</a>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════════
+     DELIVERY MAP — key each product to its file in /downloads/.
+     Each Stripe Payment Link's "after payment" redirect points here with ?p=KEY
+     e.g.  https://druvc.com/thankyou.html?p=tpps
+════════════════════════════════════════════════════════════ -->
+<script>
+const DOWNLOADS = {
+  tpps:   { title:"TPPS Manual",              file:"downloads/tpps-manual.pdf" },
+  method: { title:"UVCMI 777™ Methodology",   file:"downloads/uvcmi-777-methodology.pdf" },
+  rsr:    { title:"Relative Strength Report", file:"downloads/relative-strength-report.pdf" }
+};
+(function(){
+  const key = new URLSearchParams(location.search).get('p');
+  const d = key && DOWNLOADS[key];
+  const btn = document.getElementById('dlBtn');
+  if (d) {
+    document.getElementById('prodName').textContent = d.title;
+    btn.href = d.file;
+    btn.setAttribute('download','');
+    btn.textContent = 'Download ' + d.title + ' →';
+  } else {
+    document.getElementById('prodName').textContent = 'Your purchase is confirmed.';
+    document.getElementById('prodMsg').textContent = 'Your download link is in your emailed receipt. If you need help, contact us below.';
+    btn.style.display = 'none';
+  }
+})();
+</script>
+</body>
+</html>
