@@ -11,5 +11,10 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://druvc.com/store.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
   <!-- Tracker pages intentionally excluded from sitemap (noindex) -->
 </urlset>
