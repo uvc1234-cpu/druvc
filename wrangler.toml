@@ -1,0 +1,29 @@
+name = "druvc"
+compatibility_date = "2026-09-01"
+pages_build_output_dir = "."
+
+[vars]
+SITE_NAME = "Dr. UVC Market Insights"
+FROM_EMAIL = "Dr. UV <signin@druvc.com>"
+
+[[kv_namespaces]]
+binding = "GATE"
+id = "49038507f2ac485a969f0a33907fd0cb"
+
+[[r2_buckets]]
+binding = "PREMIUM"
+bucket_name = "druvc-premium"
+
+# Preview (test branch) only: a throwaway test code so the gate can be tried before any secrets exist.
+[env.preview.vars]
+SITE_NAME = "Dr. UVC Market Insights (TEST)"
+FROM_EMAIL = "Dr. UV <signin@druvc.com>"
+TEST_CODE = "TEST-1026"
+
+[[env.preview.kv_namespaces]]
+binding = "GATE"
+id = "49038507f2ac485a969f0a33907fd0cb"
+
+[[env.preview.r2_buckets]]
+binding = "PREMIUM"
+bucket_name = "druvc-premium"

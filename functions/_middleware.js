@@ -11,11 +11,12 @@
 const DAY = 86400;
 const SESSION_DAYS = 30;
 
-export default {
-  async fetch(req, env, ctx) {
+export async function onRequest(ctx) {
+    const req = ctx.request, env = ctx.env;
     const url = new URL(req.url);
     const p = url.pathname;
     try {
+      if (p.startsWith('/functions/') || p === '/wrangler.toml' || p.startsWith('/.git')) return new Response('Not found', { status: 404 });
       if (p === '/account/login') return req.method === 'POST' ? login(req, env, url) : page(env, 'Sign in', loginForm());
       if (p === '/account/verify') return verify(req, env, url);
       if (p === '/account/logout') return logout(req, env);
@@ -23,21 +24,14 @@ export default {
       if (p === '/account') return account(req, env);
       if (p.startsWith('/admin/')) return admin(req, env, url);
       if (p.startsWith('/premium/')) return premium(req, env, url, ctx);
-      return passthrough(req, env, url);
+      const r = await ctx.next();
+      const h = new Headers(r.headers); h.set('X-Robots-Tag', 'noai, noimageai');
+      return new Response(r.body, { status: r.status, headers: h });
     } catch (e) {
       return page(env, 'Error', `<p>Something went wrong. Please try again.</p>`, 500);
     }
-  },
-};
-
-// ---------- public site ----------
-async function passthrough(req, env, url) {
-  const origin = new URL(url.pathname + url.search, env.SITE_ORIGIN);
-  const r = await fetch(new Request(origin, req), { cf: { cacheTtl: 300 } });
-  const h = new Headers(r.headers);
-  h.set('X-Robots-Tag', 'noai, noimageai');
-  return new Response(r.body, { status: r.status, headers: h });
 }
+
 
 // ---------- sign-in by email link ----------
 const emailOk = (e) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e) && e.length < 200;
@@ -115,7 +109,8 @@ async function redeem(req, env) {
   const f = await req.formData();
   const code = String(f.get('code') || '').trim().toUpperCase();
   if (!(await limit(env, `rl:code:${ip(req)}`, 10, 3600))) return page(env, 'Access code', `<p>Too many attempts. Please try again later.</p>`, 429);
-  const rec = code && (await env.GATE.get(`code:${code}`, 'json'));
+  let rec = code && (await env.GATE.get(`code:${code}`, 'json'));
+  if (!rec && env.TEST_CODE && code === env.TEST_CODE) rec = { scope: '/premium/', expires: now() + DAY, uses_left: null };
   if (!rec || (rec.expires && rec.expires < now()) || rec.uses_left === 0)
     return page(env, 'Access code', `<p>That code is not valid or has expired.</p>` + codeForm(), 400);
   if (typeof rec.uses_left === 'number') { rec.uses_left -= 1; await env.GATE.put(`code:${code}`, JSON.stringify(rec)); }
@@ -151,6 +146,7 @@ async function premium(req, env, url, ctx) {
   let key = url.pathname.replace(/^\/premium\//, '');
   if (key === '' || key.endsWith('/')) key += 'index.html';
   const obj = await env.PREMIUM.get(key);
+  if (!obj && env.TEST_CODE && key === 'index.html') return new Response(`<!doctype html><html><body style="background:#FFFEF2;font-family:Georgia;padding:30px"><h1 style="color:#1E5C2E">Premium test page</h1><p>If you can read this, the gate let you in.</p></body></html>`.replace('</body>', `<div style="font:12px Georgia;color:#9a8a40;text-align:center">Licensed to ${esc(who)} · Do not redistribute</div></body>`), { headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store' } });
   if (!obj) return page(env, 'Not found', `<p>That page doesn't exist.</p>`, 404);
   const type = obj.httpMetadata?.contentType || guessType(key);
   const h = new Headers({ 'Content-Type': type, 'Cache-Control': 'private, no-store', 'X-Robots-Tag': 'noindex, noai, noimageai' });
