@@ -1,0 +1,1 @@
+{"name":"druvc-gate","private":true,"scripts":{"deploy":"wrangler deploy"},"devDependencies":{"wrangler":"4.153.0"}}
